@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://vajesus07-bit.github.io/calculape/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/calculadoras/liquidacion.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/calculadoras/cts.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/calculadoras/gratificacion.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/calculadoras/vacaciones.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/calculadoras/igv.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/guias/liquidacion-paso-a-paso.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/guias/cts-guia.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/guias/gratificaciones-guia.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/guias/vacaciones-guia.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-<url><loc>https://vajesus07-bit.github.io/calculape/guias/asignacion-familiar.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://vajesus07-bit.github.io/calculape/documents/constancia-trabajo.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://vajesus07-bit.github.io/calculape/documents/recibo-honorarios.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://vajesus07-bit.github.io/calculape/documents/recibo-venta.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://vajesus07-bit.github.io/calculape/sobre.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 <url><loc>https://vajesus07-bit.github.io/calculape/politica-privacidad.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

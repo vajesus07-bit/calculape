@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generador de Constancia de Trabajo PDF Gratis | DocsPeru</title>
+<meta name="description" content="Genera tu constancia de trabajo en PDF al instante. Sin registro, sin costo. Documento referencial para Perú.">
+<link rel="canonical" href="https://vajesus07-bit.github.io/calculape/documents/constancia-trabajo.html">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="../index.html"><span class="logo-mark">D</span> DocsPeru</a>
+<nav>
+<a href="../index.html">Herramientas</a>
+<a href="../index.html#como-funciona">Cómo funciona</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../index.html">Herramientas</a> › Constancia de Trabajo</p>
+<h1 class="title">Constancia de Trabajo</h1>
+<p class="intro">Llena los datos y genera un PDF con la constancia de trabajo referencial. Sin registro, sin costo.</p>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+<div class="doc-layout">
+<div class="card">
+<form id="form" novalidate>
+<h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:14px">Datos de la empresa</h3>
+<div class="field">
+<label>Nombre o razón social</label>
+<input type="text" id="empNombre" placeholder="Ej. Inversiones Díaz S.A.C." required>
+</div>
+<div class="row">
+<div class="field">
+<label>RUC</label>
+<input type="text" id="empRuc" placeholder="Ej. 20456789012" maxlength="11">
+</div>
+<div class="field">
+<label>Ciudad</label>
+<input type="text" id="empCiudad" placeholder="Ej. Lima" value="Lima">
+</div>
+</div>
+<div class="field">
+<label>Dirección</label>
+<input type="text" id="empDireccion" placeholder="Ej. Av. Arequipa 1234, Lima">
+</div>
+<h3 style="font-family:var(--font-display);font-size:1rem;margin:18px 0 14px">Datos del trabajador</h3>
+<div class="field">
+<label>Nombre completo</label>
+<input type="text" id="traNombre" placeholder="Ej. María López García" required>
+</div>
+<div class="row">
+<div class="field">
+<label>DNI</label>
+<input type="text" id="traDni" placeholder="Ej. 47234567" maxlength="8">
+</div>
+<div class="field">
+<label>Cargo / puesto</label>
+<input type="text" id="traCargo" placeholder="Ej. Asistente administrativo">
+</div>
+</div>
+<div class="row">
+<div class="field">
+<label>Fecha de ingreso</label>
+<input type="date" id="fecIngreso">
+</div>
+<div class="field">
+<label>Fecha de emisión</label>
+<input type="date" id="fecEmision" value="">
+</div>
+</div>
+<div class="field">
+<label>Remuneración bruta mensual (S/)</label>
+<input type="number" id="salario" placeholder="Ej. 2500" min="0" step="0.01">
+<span class="hint">Se incluirá en número y en letras</span>
+</div>
+<p class="err" id="err"></p>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Generar PDF</button>
+</form>
+</div>
+<div>
+<div class="result-panel">
+<div class="result-header"><span>Vista previa del PDF</span></div>
+<div class="preview" id="preview">
+<div class="preview-placeholder">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+<p>Llena el formulario y genera el PDF</p>
+</div>
+</div>
+<div class="result-actions" id="actions" style="display:none">
+<button class="btn btn-primary btn-download" id="download">Descargar PDF</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">DocsPeru</strong><p style="font-size:.88rem;margin-top:8px">Documentos PDF gratis para Perú.</p></div>
+<div><h4>Herramientas</h4>
+<a href="constancia-trabajo.html">Constancia de Trabajo</a>
+<a href="recibo-honorarios.html">Recibo por Honorarios</a>
+<a href="recibo-venta.html">Recibo de Venta</a>
+</div>
+<div><h4>Legal</h4>
+<a href="../sobre.html">Sobre nosotros</a>
+<a href="../politica-privacidad.html">Política de privacidad</a>
+</div>
+</div>
+<p class="fine">© 2026 DocsPeru · Documentos referenciales. No sustituyen formatos oficiales de SUNAT.</p>
+</div>
+</footer>
+<script src="../assets/js/utils.js"></script>
+<script>
+(function(){
+var form=document.getElementById('form');
+var err=document.getElementById('err');
+var preview=document.getElementById('preview');
+var actions=document.getElementById('actions');
+var downloadBtn=document.getElementById('download');
+var generatedDoc=null;
+
+document.getElementById('fecEmision').valueAsDate=new Date();
+form.addEventListener('submit',function(e){
+e.preventDefault();generate();
+});
+function generate(){
+err.textContent='';
+var empNombre=document.getElementById('empNombre').value.trim();
+var empRuc=document.getElementById('empRuc').value.trim();
+var empCiudad=document.getElementById('empCiudad').value.trim()||'Lima';
+var empDireccion=document.getElementById('empDireccion').value.trim();
+var traNombre=document.getElementById('traNombre').value.trim();
+var traDni=document.getElementById('traDni').value.trim();
+var traCargo=document.getElementById('traCargo').value.trim();
+var fecIngreso=document.getElementById('fecIngreso').value;
+var fecEmision=document.getElementById('fecEmision').value;
+var salario=parseFloat(document.getElementById('salario').value);
+if(!traNombre){err.textContent='Ingresa el nombre del trabajador.';return}
+if(!empNombre){err.textContent='Ingresa el nombre de la empresa.';return}
+var dIngreso=fecIngreso?new Date(fecIngreso+'T00:00:00'):null;
+var dEmision=fecEmision?new Date(fecEmision+'T00:00:00'):new Date();
+var salaryText='';
+if(salario>0){
+var intPart=Math.floor(salario);
+var decPart=Math.round((salario-intPart)*100);
+salaryText=numToWords(intPart);
+if(decPart>0)salaryText+=' y '+numToWords(decPart)+' céntimos';
+}
+var cityUpper=empCiudad.toUpperCase();
+var {jsPDF}=window.jspdf;
+var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+var pageW=210;
+var line=0;
+doc.setFont('helvetica');
+doc.setFontSize(9);
+line=15;
+doc.setFont('helvetica','bold');
+doc.setFontSize(14);
+var empNameDisplay=empNombre.toUpperCase();
+doc.text(empNameDisplay,pageW/2,{line},'center');
+doc.setFont('helvetica','normal');
+doc.setFontSize(9);
+line+=5;
+if(empRuc)doc.text('RUC: '+empRuc,pageW/2,{line},'center');
+line+=4;
+if(empDireccion){doc.setFontSize(8);doc.text(empDireccion,pageW/2,{line},'center');line+=4}
+doc.setFontSize(9);
+line+=2;
+doc.line(20,line,pageW-20,line);line+=8;
+doc.setFont('helvetica','bold');
+doc.setFontSize(13);
+doc.text('CONSTANCIA DE TRABAJO',pageW/2,{line},'center');line+=10;
+doc.setFont('helvetica','normal');
+doc.setFontSize(10);
+var certText='Quien suscribe, en representación de '+empNameDisplay+', hace constar que '+traNombre;
+if(traDni)certText+=', portador(a) del DNI N° '+traDni;
+certText+=', trabaja en nuestra empresa desde el '+dateToStr(dIngreso)+', desempeñando el cargo de '+traCargo+'.';
+var lines=doc.splitTextToSize(certText,pageW-40);
+doc.text(lines,20,{line});line+=lines.length*5+4;
+if(salario>0){
+var salLine='Asimismo, se deja constancia que su remuneración bruta mensual es de S/ '+salario.toFixed(2)+' ('+salaryText+' soles).';
+var salLines=doc.splitTextToSize(salLine,pageW-40);
+doc.text(salLines,20,{line});line+=salLines.length*5+4;
+}
+var endText='La presente constancia se expide a solicitud del interesado, para los fines que convenga.';
+var endLines=doc.splitTextToSize(endText,pageW-40);
+doc.text(endLines,20,{line});line+=endLines.length*5+4;
+line+=4;
+doc.text(cityUpper+', '+dateToStr(dEmision),20,{line});line+=14;
+doc.line(20,{line},70,{line});line+=3;
+doc.setFontSize(8);
+doc.text('Firma y sello del empleador',20,{line});line+=8;
+doc.line(pageW-70,{line},pageW-20,{line});line+=3;
+doc.text('Trabajador',pageW-70,{line},'center');
+generatedDoc=doc;
+doc.getBlob(function(blob){
+var url=URL.createObjectURL(blob);
+preview.innerHTML='<iframe src="'+url+'"></iframe>';
+actions.style.display='flex';
+});
+}
+downloadBtn.addEventListener('click',function(){
+if(generatedDoc) generatedDoc.save('constancia-de-trabajo.pdf');
+});
+})();
+</script>
+</body>
+</html>

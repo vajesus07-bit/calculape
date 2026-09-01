@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generador de Recibo de Venta PDF | DocsPeru</title>
+<meta name="description" content="Genera recibos de venta con detalle de productos, IGV y total. PDF instantáneo para pequeños negocios en Perú.">
+<link rel="canonical" href="https://vajesus07-bit.github.io/calculape/documents/recibo-venta.html">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="../index.html"><span class="logo-mark">D</span> DocsPeru</a>
+<nav>
+<a href="../index.html">Herramientas</a>
+<a href="../index.html#como-funciona">Cómo funciona</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../index.html">Herramientas</a> › Recibo de Venta</p>
+<h1 class="title">Recibo de Venta</h1>
+<p class="intro">Agrega los productos vendidos, cantidades y precios. El subtotal, IGV y total se calculan automáticamente.</p>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+<div class="doc-layout">
+<div class="card">
+<form id="form" novalidate>
+<div class="row">
+<div class="field">
+<label>Nombre / Razón social (vendedor)</label>
+<input type="text" id="venNombre" placeholder="Ej. Tienda El Dólar" required>
+</div>
+<div class="field">
+<label>RUC</label>
+<input type="text" id="venRuc" placeholder="Ej. 10456789012" maxlength="11">
+</div>
+</div>
+<div class="row">
+<div class="field">
+<label>Cliente</label>
+<input type="text" id="cliNombre" placeholder="Ej. Juan Pérez" required>
+</div>
+<div class="field">
+<label>DNI / RUC</label>
+<input type="text" id="cliDoc" placeholder="Ej. 47234567">
+</div>
+</div>
+<div class="field">
+<label>Fecha</label>
+<input type="date" id="fecha" value="">
+</div>
+<h3 style="font-family:var(--font-display);font-size:1rem;margin:16px 0 12px">Productos vendidos</h3>
+<div id="items">
+<div class="item-row row" style="align-items:end;gap:8px">
+<div style="flex:3">
+<div class="field" style="margin-bottom:0"><label>Descripción</label></div>
+</div>
+<div style="flex:1">
+<div class="field" style="margin-bottom:0"><label>Cant.</label></div>
+</div>
+<div style="flex:1">
+<div class="field" style="margin-bottom:0"><label>Precio S/</label></div>
+</div>
+<div style="flex:1">
+<div class="field" style="margin-bottom:0"><label>Total</label></div>
+</div>
+<div style="flex:0"></div>
+</div>
+</div>
+<button type="button" class="btn btn-ghost" id="addItem" style="margin-top:10px;font-size:.85rem;padding:8px 14px">+ Agregar producto</button>
+<div style="margin-top:16px;padding:12px;background:var(--green-soft);border-radius:10px">
+<div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:4px">
+<span>Subtotal:</span><span id="subtotalVer">S/ 0.00</span>
+</div>
+<div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:4px">
+<span>IGV (18%):</span><span id="igvVer">S/ 0.00</span>
+</div>
+<div style="display:flex;justify-content:space-between;font-weight:700;font-size:1.1rem;color:var(--green-2)">
+<span>Total:</span><span id="totalVer">S/ 0.00</span>
+</div>
+</div>
+<p class="err" id="err"></p>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:14px">Generar PDF</button>
+</form>
+</div>
+<div>
+<div class="result-panel">
+<div class="result-header"><span>Vista previa del PDF</span></div>
+<div class="preview" id="preview">
+<div class="preview-placeholder">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+<p>Llena el formulario y genera el PDF</p>
+</div>
+</div>
+<div class="result-actions" id="actions" style="display:none">
+<button class="btn btn-primary btn-download" id="download">Descargar PDF</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">DocsPeru</strong><p style="font-size:.88rem;margin-top:8px">Documentos PDF gratis para Perú.</p></div>
+<div><h4>Herramientas</h4>
+<a href="constancia-trabajo.html">Constancia de Trabajo</a>
+<a href="recibo-honorarios.html">Recibo por Honorarios</a>
+<a href="recibo-venta.html">Recibo de Venta</a>
+</div>
+<div><h4>Legal</h4>
+<a href="../sobre.html">Sobre nosotros</a>
+<a href="../politica-privacidad.html">Política de privacidad</a>
+</div>
+</div>
+<p class="fine">© 2026 DocsPeru · Documentos referenciales. No sustituyen comprobantes electrónicos de SUNAT.</p>
+</div>
+</footer>
+<script src="../assets/js/utils.js"></script>
+<script>
+(function(){
+var itemsContainer=document.getElementById('items');
+var addBtn=document.getElementById('addItem');
+var err=document.getElementById('err');
+var preview=document.getElementById('preview');
+var actions=document.getElementById('actions');
+var downloadBtn=document.getElementById('download');
+var generatedDoc=null;
+document.getElementById('fecha').valueAsDate=new Date();
+var itemCount=1;
+function addItemRow(){
+var row=document.createElement('div');
+row.className='item-row row';
+row.style.cssText='align-items:end;gap:8px;margin-bottom:8px';
+row.innerHTML='<div style="flex:3"><div class="field" style="margin-bottom:0"><input type="text" class="item-desc" placeholder="Ej. Laptop HP 240" required></div></div>'+
+'<div style="flex:1"><div class="field" style="margin-bottom:0"><input type="number" class="item-qty" min="1" value="1" placeholder="1"></div></div>'+
+'<div style="flex:1"><div class="field" style="margin-bottom:0"><input type="number" class="item-price" min="0" step="0.01" placeholder="0.00"></div></div>'+
+'<div style="flex:1;padding:10px 0;font-weight:700;font-size:.9rem;text-align:right" class="item-total">S/ 0.00</div>'+
+'<div style="flex:0"><button type="button" class="remove-item" style="background:none;border:none;cursor:pointer;color:var(--red);font-size:1.2rem;padding:4px" onclick="this.closest(\'.item-row\').remove();updateTotals()">×</button></div>';
+itemsContainer.appendChild(row);
+row.querySelector('.item-price').addEventListener('input',updateTotals);
+row.querySelector('.item-qty').addEventListener('input',updateTotals);
+itemCount++;
+}
+function updateTotals(){
+var rows=document.querySelectorAll('.item-row');
+var subtotal=0;
+rows.forEach(function(r){
+var desc=r.querySelector('.item-desc').value.trim();
+if(!desc)return;
+var qty=parseFloat(r.querySelector('.item-qty').value)||0;
+var price=parseFloat(r.querySelector('.item-price').value)||0;
+var total=qty*price;
+subtotal+=total;
+r.querySelector('.item-total').textContent='S/ '+total.toFixed(2);
+});
+var igv=subtotal*0.18;
+var total=subtotal+igv;
+document.getElementById('subtotalVer').textContent='S/ '+subtotal.toFixed(2);
+document.getElementById('igvVer').textContent='S/ '+igv.toFixed(2);
+document.getElementById('totalVer').textContent='S/ '+total.toFixed(2);
+}
+addBtn.addEventListener('click',addItemRow);
+for(var i=0;i<3;i++) addItemRow();
+document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();generate()});
+function generate(){
+err.textContent='';
+var venNombre=document.getElementById('venNombre').value.trim();
+var venRuc=document.getElementById('venRuc').value.trim();
+var cliNombre=document.getElementById('cliNombre').value.trim();
+var cliDoc=document.getElementById('cliDoc').value.trim();
+var fecha=document.getElementById('fecha').value;
+if(!venNombre){err.textContent='Ingresa el nombre del vendedor.';return}
+if(!cliNombre){err.textContent='Ingresa el nombre del cliente.';return}
+var rows=document.querySelectorAll('.item-row');
+var items=[];
+var subtotal=0;
+rows.forEach(function(r){
+var desc=r.querySelector('.item-desc').value.trim();
+if(!desc)return;
+var qty=parseFloat(r.querySelector('.item-qty').value)||0;
+var price=parseFloat(r.querySelector('.item-price').value)||0;
+var total=qty*price;
+subtotal+=total;
+items.push({desc:desc,qty:qty,price:price,total:total});
+});
+if(items.length===0){err.textContent='Agrega al menos un producto.';return}
+var igv=subtotal*0.18;
+var total=subtotal+igv;
+var dFecha=fecha?new Date(fecha+'T00:00:00'):new Date();
+var {jsPDF}=window.jspdf;
+var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+var pageW=210;
+var line=0;
+doc.setFont('helvetica');
+line=10;
+doc.setFont('helvetica','bold');
+doc.setFontSize(15);
+doc.text('RECIBO DE VENTA',pageW/2,{line},'center');line+=6;
+doc.setFont('helvetica','normal');
+doc.setFontSize(7.5);
+doc.text('Documento referencial (no válido como comprobante de pago SUNAT)',pageW/2,{line},'center');line+=5;
+doc.line(20,line,pageW-20,line);line+=5;
+doc.setFontSize(8.5);
+doc.setFont('helvetica','bold');
+doc.text('VENDEDOR',20,{line});doc.text('CLIENTE',pageW/2,{line});line+=4;
+doc.setFont('helvetica','normal');
+doc.text(venNombre,20,{line});doc.text(cliNombre,pageW/2,{line});line+=3.5;
+if(venRuc){doc.text('RUC: '+venRuc,20,{line});}
+if(cliDoc){doc.text('DNI/RUC: '+cliDoc,pageW/2,{line});}line+=3.5;
+doc.text('Fecha: '+dateToStr(dFecha),20,{line});line+=5;
+doc.line(20,line,pageW-20,line);line+=5;
+doc.setFont('helvetica','bold');
+doc.setFontSize(8.5);
+var colN=20;var colQ=115;var colP=145;var colT=pageW-20;
+doc.text('Descripción',colN,{line});doc.text('Cant.',colQ,{line});doc.text('Precio',colP,{line});doc.text('Total',colT,{line},'right');line+=2;
+doc.line(20,{line},pageW-20,{line});line+=3;
+doc.setFont('helvetica','normal');
+doc.setFontSize(8.5);
+items.forEach(function(item){
+var descLines=doc.splitTextToSize(item.desc,90);
+doc.text(descLines,colN,{line});line+=descLines.length*4;
+doc.text(String(item.qty),colQ,{line});line+=4;
+doc.text('S/ '+item.price.toFixed(2),colP,{line});line+=4;
+doc.text('S/ '+item.total.toFixed(2),colT,{line},'right');line+=6;
+});
+doc.line(20,{line},pageW-20,{line});line+=4;
+doc.setFont('helvetica','bold');
+doc.setFontSize(9);
+doc.text('Subtotal:',130,{line});doc.text('S/ '+subtotal.toFixed(2),colT,{line},'right');line+=5;
+doc.text('IGV (18%):',130,{line});doc.text('S/ '+igv.toFixed(2),colT,{line},'right');line+=5;
+doc.setFontSize(11);
+doc.text('TOTAL:',130,{line});doc.text('S/ '+total.toFixed(2),colT,{line},'right');line+=8;
+var totalWords='Son: '+numToWords(Math.floor(total))+' soles con '+numToWords(Math.round((total-Math.floor(total))*100))+' céntimos.';
+var totalLines=doc.splitTextToSize(totalWords,pageW-40);
+doc.setFontSize(8);
+doc.text(totalLines,20,{line});line+=totalLines.length*4+6;
+doc.line(20,{line},pageW-20,{line});line+=4;
+doc.setFontSize(8);
+doc.text('Este recibo no tiene validez tributaria. Para operaciones formales, emite tu comprobante electrónico en SUNAT.',20,{line});line+=3;
+generatedDoc=doc;
+doc.getBlob(function(blob){
+var url=URL.createObjectURL(blob);
+preview.innerHTML='<iframe src="'+url+'"></iframe>';
+actions.style.display='flex';
+});
+}
+downloadBtn.addEventListener('click',function(){if(generatedDoc)generatedDoc.save('recibo-de-venta.pdf')});
+})();
+</script>
+</body>
+</html>

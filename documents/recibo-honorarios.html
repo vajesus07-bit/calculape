@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Generador de Recibo por Honorarios PDF | DocsPeru</title>
+<meta name="description" content="Genera tu recibo por honorarios en PDF al instante. Calcula IGV automáticamente. Sin registro, sin costo.">
+<link rel="canonical" href="https://vajesus07-bit.github.io/calculape/documents/recibo-honorarios.html">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="../index.html"><span class="logo-mark">D</span> DocsPeru</a>
+<nav>
+<a href="../index.html">Herramientas</a>
+<a href="../index.html#como-funciona">Cómo funciona</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../index.html">Herramientas</a> › Recibo por Honorarios</p>
+<h1 class="title">Recibo por Honorarios</h1>
+<p class="intro">Ingresa los datos del emisor, receptor y el monto del servicio. El IGV se calcula automáticamente.</p>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+<div class="doc-layout">
+<div class="card">
+<form id="form" novalidate>
+<h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:14px">Datos del emisor (quien cobra)</h3>
+<div class="field">
+<label>Nombre completo / Razón social</label>
+<input type="text" id="emiNombre" placeholder="Ej. Carlos Mendoza Paredes" required>
+</div>
+<div class="row">
+<div class="field">
+<label>RUC</label>
+<input type="text" id="emiRuc" placeholder="Ej. 10472345671" maxlength="11">
+</div>
+<div class="field">
+<label>Dirección</label>
+<input type="text" id="emiDireccion" placeholder="Ej. Jr. Lampa 345, Lima">
+</div>
+</div>
+<h3 style="font-family:var(--font-display);font-size:1rem;margin:18px 0 14px">Datos del receptor (quien paga)</h3>
+<div class="field">
+<label>Nombre / Razón social</label>
+<input type="text" id="recNombre" placeholder="Ej. Servicios Generales S.A.C." required>
+</div>
+<div class="field">
+<label>RUC / DNI</label>
+<input type="text" id="recRuc" placeholder="Ej. 20456789012">
+</div>
+<h3 style="font-family:var(--font-display);font-size:1rem;margin:18px 0 14px">Detalles del servicio</h3>
+<div class="field">
+<label>Descripción del servicio</label>
+<textarea id="servicio" rows="2" placeholder="Ej. Servicio de asesoría contable mensual correspondiente a enero 2026" required></textarea>
+</div>
+<div class="row">
+<div class="field">
+<label>Monto total (S/)</label>
+<input type="number" id="monto" min="0" step="0.01" placeholder="Ej. 1000" required>
+</div>
+<div class="field">
+<label>Fecha</label>
+<input type="date" id="fecha" value="">
+</div>
+</div>
+<p class="err" id="err"></p>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Generar PDF</button>
+</form>
+</div>
+<div>
+<div class="result-panel">
+<div class="result-header"><span>Vista previa del PDF</span></div>
+<div class="preview" id="preview">
+<div class="preview-placeholder">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+<p>Llena el formulario y genera el PDF</p>
+</div>
+</div>
+<div class="result-actions" id="actions" style="display:none">
+<button class="btn btn-primary btn-download" id="download">Descargar PDF</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">DocsPeru</strong><p style="font-size:.88rem;margin-top:8px">Documentos PDF gratis para Perú.</p></div>
+<div><h4>Herramientas</h4>
+<a href="constancia-trabajo.html">Constancia de Trabajo</a>
+<a href="recibo-honorarios.html">Recibo por Honorarios</a>
+<a href="recibo-venta.html">Recibo de Venta</a>
+</div>
+<div><h4>Legal</h4>
+<a href="../sobre.html">Sobre nosotros</a>
+<a href="../politica-privacidad.html">Política de privacidad</a>
+</div>
+</div>
+<p class="fine">© 2026 DocsPeru · Documentos referenciales. No sustituyen documentos oficiales de SUNAT.</p>
+</div>
+</footer>
+<script src="../assets/js/utils.js"></script>
+<script>
+(function(){
+var form=document.getElementById('form');
+var err=document.getElementById('err');
+var preview=document.getElementById('preview');
+var actions=document.getElementById('actions');
+var downloadBtn=document.getElementById('download');
+var generatedDoc=null;
+document.getElementById('fecha').valueAsDate=new Date();
+form.addEventListener('submit',function(e){e.preventDefault();generate()});
+function generate(){
+err.textContent='';
+var emiNombre=document.getElementById('emiNombre').value.trim();
+var emiRuc=document.getElementById('emiRuc').value.trim();
+var emiDireccion=document.getElementById('emiDireccion').value.trim();
+var recNombre=document.getElementById('recNombre').value.trim();
+var recRuc=document.getElementById('recRuc').value.trim();
+var servicio=document.getElementById('servicio').value.trim();
+var monto=parseFloat(document.getElementById('monto').value);
+var fecha=document.getElementById('fecha').value;
+if(!emiNombre){err.textContent='Ingresa el nombre del emisor.';return}
+if(!recNombre){err.textContent='Ingresa el nombre del receptor.';return}
+if(!servicio){err.textContent='Ingresa la descripción del servicio.';return}
+if(!monto||monto<=0){err.textContent='Ingresa un monto válido.';return}
+var igv=monto*0.18;
+var total=monto+igv;
+var dFecha=fecha?new Date(fecha+'T00:00:00'):new Date();
+var {jsPDF}=window.jspdf;
+var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+var pageW=210;
+var line=0;
+doc.setFont('helvetica');
+line=12;
+doc.setFont('helvetica','bold');
+doc.setFontSize(16);
+doc.text('RECIBO POR HONORARIOS',pageW/2,{line},'center');line+=8;
+doc.setFont('helvetica','normal');
+doc.setFontSize(8);
+doc.text('Documento referencial (no válido para deducción fiscal)',pageW/2,{line},'center');line+=8;
+doc.line(20,line,pageW-20,line);line+=6;
+doc.setFontSize(9);
+doc.setFont('helvetica','bold');
+doc.text('EMISOR',20,{line});line+=4;
+doc.setFont('helvetica','normal');
+doc.text('Nombre: '+emiNombre,20,{line});line+=4;
+if(emiRuc){doc.text('RUC: '+emiRuc,20,{line});line+=4}
+if(emiDireccion){doc.text('Dirección: '+emiDireccion,20,{line});line+=4}
+line+=2;
+doc.setFont('helvetica','bold');
+doc.text('RECEPTOR',20,{line});line+=4;
+doc.setFont('helvetica','normal');
+doc.text('Nombre: '+recNombre,20,{line});line+=4;
+if(recRuc){doc.text((recRuc.length===11?'RUC: ':'DNI: ')+recRuc,20,{line});line+=4}
+line+=2;
+doc.setFont('helvetica','bold');
+doc.text('CONCEPTO',20,{line});line+=4;
+doc.setFont('helvetica','normal');
+var servLines=doc.splitTextToSize(servicio,pageW-40);
+doc.text(servLines,20,{line});line+=servLines.length*4.5+3;
+line+=2;
+doc.line(20,line,pageW-20,line);line+=6;
+doc.setFontSize(10);
+var col1=20;var col2=pageW-20;
+var rowH=6;
+doc.setFont('helvetica','bold');
+doc.text('Descripción',col1,{line});
+doc.text('Monto',col2,{line},'right');line+=rowH;
+doc.setFont('helvetica','normal');
+doc.line(20,{line},pageW-20,{line});line+=1;
+doc.text('Honorarios por servicio',col1,{line});
+doc.text('S/ '+monto.toFixed(2),col2,{line},'right');line+=rowH;
+doc.line(20,{line},pageW-20,{line});line+=2;
+doc.setFont('helvetica','bold');
+doc.text('Subtotal',col1,{line});
+doc.text('S/ '+monto.toFixed(2),col2,{line},'right');line+=rowH-2;
+doc.text('IGV (18%)',col1,{line});
+doc.text('S/ '+igv.toFixed(2),col2,{line},'right');line+=rowH-2;
+doc.line(20,{line},pageW-20,{line});line+=1;
+doc.setFontSize(11);
+doc.text('TOTAL A PAGAR',col1,{line});
+doc.text('S/ '+total.toFixed(2),col2,{line},'right');line+=rowH+4;
+var totalWords='Son: '+numToWords(Math.floor(total))+' soles con '+numToWords(Math.round((total-Math.floor(total))*100))+' céntimos.';
+var totalLines=doc.splitTextToSize(totalWords,pageW-40);
+doc.setFontSize(8);
+doc.text(totalLines,20,{line});line+=totalLines.length*4+4;
+line+=4;
+doc.setFontSize(9);
+doc.text('Fecha de emisión: '+dateToStr(dFecha),20,{line});line+=12;
+doc.line(20,{line},70,{line});line+=3;
+doc.setFontSize(8);
+doc.text('Firma del emisor',20,{line});
+generatedDoc=doc;
+doc.getBlob(function(blob){
+var url=URL.createObjectURL(blob);
+preview.innerHTML='<iframe src="'+url+'"></iframe>';
+actions.style.display='flex';
+});
+}
+downloadBtn.addEventListener('click',function(){if(generatedDoc)generatedDoc.save('recibo-honorarios.pdf')});
+})();
+</script>
+</body>
+</html>
