@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de IGV Perú 2026 | Calcula.pe</title>
+<meta name="description" content="Agrega o extrae el 18% de IGV a cualquier precio al instante. Calculadora gratuita para Perú.">
+<link rel="canonical" href="https://calcula.pe/calculadoras/igv.html">
+<meta property="og:title" content="Calculadora de IGV">
+<meta property="og:description" content="Agrega o quita el IGV de cualquier precio en segundos.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://calcula.pe/calculadoras/igv.html">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de IGV","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://calcula.pe/calculadoras/igv.html","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"},"inLanguage":"es-PE"}</script>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="/"><span class="logo-mark">S/</span> <span class="logo-dot">Calcula.pe</span></a>
+<nav>
+<a href="/#calculadoras">Calculadoras</a>
+<a href="/#guias">Guías</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="/">Inicio</a> › <a href="/#calculadoras">Calculadoras</a> › IGV</p>
+<h1 class="title">Calculadora de IGV</h1>
+<p class="intro">El Impuesto General a las Ventas es 18% en Perú (16% IGV + 2% Impuesto de Promoción Municipal). Usa esta herramienta para agregar el IGV a un precio base o para extraerlo de un precio total.</p>
+<div class="ad-slot" data-pos="top"><span>Espacio publicitario</span></div>
+<div class="calc-layout">
+<div class="card">
+<div class="field">
+<label>Operación</label>
+<div class="radios">
+<label><input type="radio" name="modo" value="agregar" checked onchange="actualizar()"><span>Agregar IGV (base → total)</span></label>
+<label><input type="radio" name="modo" value="extraer" onchange="actualizar()"><span>Extraer IGV (total → base)</span></label>
+</div>
+</div>
+<div class="field">
+<label for="monto">Monto (S/)</label>
+<input type="number" id="monto" min="0" step="0.01" placeholder="Ej. 100" oninput="actualizar()">
+</div>
+<div class="result" id="result">
+<p class="rlabel" id="rlabel">Base imponible</p>
+<p class="rtotal" id="base">S/ 0.00</p>
+<table class="breakdown">
+<tr><td>Base imponible</td><td id="b2">S/ 0.00</td></tr>
+<tr><td>IGV (18%)</td><td id="igv2">S/ 0.00</td></tr>
+<tr><td style="font-weight:700">Total</td><td id="tot2" style="font-weight:700">S/ 0.00</td></tr>
+</table>
+</div>
+</div>
+<div class="prose">
+<h2>¿Cómo funciona?</h2>
+<p>El IGV en Perú es 18% sobre la base imponible. Para <strong>agregar IGV</strong>, se multiplica la base por 1,18. Para <strong>extraerlo</strong>, se divide el total entre 1,18.</p>
+<p style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px;font-family:monospace;margin:12px 0">Total = Base × 1.18<br>Base = Total ÷ 1.18</p>
+<p>Recuerda que en tus comprobantes de pago (facturas o boletas) debes distinguir entre el valor de venta (base), el IGV y el precio total.</p>
+</div>
+</div>
+</div>
+<div class="ad-slot" data-pos="mid"><span>Espacio publicitario</span></div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">Calcula.pe</strong><p style="font-size:.9rem;margin-top:8px">Herramientas laborales gratuitas para Perú.</p></div>
+<div>
+<h4>Calculadoras</h4>
+<a href="/calculadoras/liquidacion.html">Liquidación</a>
+<a href="/calculadoras/cts.html">CTS</a>
+<a href="/calculadoras/gratificacion.html">Gratificación</a>
+<a href="/calculadoras/igv.html">IGV</a>
+</div>
+<div>
+<h4>Guías</h4>
+<a href="/sobre.html">Sobre nosotros</a>
+<a href="/politica-privacidad.html">Política de privacidad</a>
+</div>
+</div>
+<p class="fine">© 2026 Calcula.pe · Solo fines informativos.</p>
+</div>
+</footer>
+<script>
+function fmtPEN(n){return new Intl.NumberFormat('es-PE',{style:'currency',currency:'PEN',maximumFractionDigits:2}).format(Number(n)||0)}
+function toNum(v){var n=parseFloat(String(v??'').replace(/,/g,''));return Number.isFinite(n)?n:0}
+function actualizar(){
+var monto=toNum(document.getElementById('monto').value);
+var modo=document.querySelector('input[name=modo]:checked').value;
+var igv=0,base=0,total=0;
+if(modo==='agregar'){base=monto;igv=base*0.18;total=base+igv}
+else{base=monto/1.18;igv=monto-base;total=monto}
+document.getElementById('rlabel').textContent=modo==='agregar'?'Base imponible':'Total ingresado';
+document.getElementById('base').textContent=fmtPEN(base);
+document.getElementById('b2').textContent=fmtPEN(base);
+document.getElementById('igv2').textContent=fmtPEN(igv);
+document.getElementById('tot2').textContent=fmtPEN(total);
+}
+</script>
+</body>
+</html>

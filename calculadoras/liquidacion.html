@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de Liquidación de Empleo Perú 2026 | Calcula.pe</title>
+<meta name="description" content="Calcula tu liquidación de empleo completa: CTS, vacaciones truncas, gratificación trunca e indemnización por despido. Herramienta gratuita y sin registro.">
+<link rel="canonical" href="https://calcula.pe/calculadoras/liquidacion.html">
+<meta property="og:title" content="Calculadora de Liquidación de Empleo">
+<meta property="og:description" content="Todo lo que te corresponde al terminar tu trabajo: CTS, vacaciones, gratificación e indemnización.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://calcula.pe/calculadoras/liquidacion.html">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Liquidación de Empleo","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://calcula.pe/calculadoras/liquidacion.html","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"},"inLanguage":"es-PE"}</script>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="/"><span class="logo-mark">S/</span> <span class="logo-dot">Calcula.pe</span></a>
+<nav>
+<a href="/#calculadoras">Calculadoras</a>
+<a href="/#guias">Guías</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="/">Inicio</a> › <a href="/#calculadoras">Calculadoras</a> › Liquidación</p>
+<h1 class="title">Liquidación de empleo</h1>
+<p class="intro">Ingresa tus datos y calcula al instante todo lo que tu empleador debe pagarte al terminar la relación laboral: remuneración por días trabajados, vacaciones truncas, gratificación trunca, CTS e indemnización (si aplica).</p>
+<div class="ad-slot" data-pos="top"><span>Espacio publicitario</span></div>
+<div class="calc-layout">
+<div class="card">
+<form id="form" novalidate>
+<div class="field">
+<label for="sueldo">Sueldo mensual bruto (S/)</label>
+<input type="number" id="sueldo" min="0" step="0.01" placeholder="Ej. 2500" required>
+</div>
+<label class="checkline">
+<input type="checkbox" id="asig">
+Recibo asignación familiar (S/
+<input type="number" id="asigMonto" value="113" min="0" step="0.01" style="width:90px;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px">)
+</label>
+<div class="row">
+<div class="field">
+<label for="fingreso">Fecha de ingreso</label>
+<input type="date" id="fingreso" required>
+</div>
+<div class="field">
+<label for="fcese">Fecha de cese</label>
+<input type="date" id="fcese" required>
+</div>
+</div>
+<div class="field">
+<label>Motivo del cese</label>
+<div class="radios">
+<label><input type="radio" name="motivo" value="renuncia" checked><span>Renuncia</span></label>
+<label><input type="radio" name="motivo" value="despido"><span>Despido arbitrario</span></label>
+</div>
+</div>
+<p class="err" id="err"></p>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Calcular liquidación</button>
+</form>
+</div>
+<div id="result" class="result" hidden>
+<p class="rlabel">Total aproximado a recibir</p>
+<p class="rtotal" id="total">S/ 0.00</p>
+<p class="note" id="meta"></p>
+<table class="breakdown">
+<tbody id="tbody"></tbody>
+</table>
+<button class="btn btn-copy" id="copy" style="width:100%;justify-content:center;margin-top:16px">Copiar resumen</button>
+</div>
+</div>
+</div>
+<div class="ad-slot" data-pos="mid"><span>Espacio publicitario</span></div>
+<div class="prose">
+<h2>¿Cómo se calcula?</h2>
+<p>La liquidación depende de la fecha de ingreso y cese, el sueldo y el motivo de término. Los componentes son:</p>
+<ul style="margin:12px 0 12px 20px">
+<li><strong>Remuneración por días trabajados:</strong> sueldo × (días trabajados en el mes de cese ÷ 30).</li>
+<li><strong>Vacaciones truncas:</strong> 30 días por año completo; si el último año está incompleto, se pagan proporcionalmente (sueldo × meses trabajados en el último año ÷ 12).</li>
+<li><strong>Gratificación trunca:</strong> (sueldo + asignación familiar) × días trabajados en el semestre ÷ 180. Incluye la bonificación del 9% (Ley 30334).</li>
+<li><strong>CTS trunca:</strong> (sueldo + asignación familiar) × días trabajados en el semestre ÷ 360.</li>
+<li><strong>Indemnización por despido arbitrario:</strong> 1,5 sueldos por cada año completo (sueldo × 1,5 × años de servicio). No aplica en caso de renuncia.</li>
+</ul>
+<p>Este cálculo es referencial. Si tienes bonificaciones, comisiones u otras remuneraciones, pueden incrementar el resultado. Consulta con un abogado laboral para un cálculo exacto.</p>
+<div class="related">
+<a class="card" href="cts.html"><h3>Calculadora CTS</h3><p>Verifica el depósito semestral por separado.</p></a>
+<a class="card" href="gratificacion.html"><h3>Gratificación</h3><p>Calcula solo la gratificación fin de semestre.</p></a>
+<a class="card" href="../guias/liquidacion-paso-a-paso.html"><h3>Guía completa</h3><p> paso a paso con plazos legales y qué hacer si no te pagan.</p></a>
+</div>
+</div>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">Calcula.pe</strong><p style="font-size:.9rem;margin-top:8px">Herramientas laborales gratuitas para Perú.</p></div>
+<div>
+<h4>Calculadoras</h4>
+<a href="/calculadoras/liquidacion.html">Liquidación</a>
+<a href="/calculadoras/cts.html">CTS</a>
+<a href="/calculadoras/gratificacion.html">Gratificación</a>
+<a href="/calculadoras/igv.html">IGV</a>
+</div>
+<div>
+<h4>Guías</h4>
+<a href="/guias/liquidacion-paso-a-paso.html">Liquidación paso a paso</a>
+<a href="/guias/cts-guia.html">Guía de CTS</a>
+<a href="/sobre.html">Sobre nosotros</a>
+<a href="/politica-privacidad.html">Política de privacidad</a>
+</div>
+</div>
+<p class="fine">© 2026 Calcula.pe · Cálculos referenciales basados en D.S. 001-97-TR, D.S. 003-97-TR y Ley 30334.</p>
+</div>
+</footer>
+<script src="/assets/js/utils.js"></script>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+$('asig').addEventListener('change',function(){$('asigMonto').parentElement.style.display=$('asig').checked?'inline-flex':'none'});
+$('asigMonto').parentElement.style.display='none';
+$('form').addEventListener('submit',function(e){e.preventDefault();calc()});
+function calc(){
+var err=$('err');err.textContent='';
+var sueldo=toNum($('sueldo').value);
+var asig=$('asig').checked?toNum($('asigMonto').value):0;
+var fiStr=$('fingreso').value,fcStr=$('fcese').value;
+if(!fiStr||!fcStr||!sueldo){err.textContent='Completa todos los campos obligatorios.';return}
+var fi=new Date(fiStr+'T00:00:00'),fc=new Date(fcStr+'T00:00:00');
+if(isNaN(fi)||isNaN(fc)||fc<=fi){err.textContent='La fecha de cese debe ser posterior a la fecha de ingreso.';return}
+var t=diffYMD(fi,fc);
+var vtMeses=(fc.getFullYear()-(fi.getFullYear()+t.y))*12+(fc.getMonth()-fi.getMonth())+(fc.getDate()>=15?1:0);
+if(vtMeses<0)vtMeses=0;
+var vt=sueldo*vtMeses/12;
+var sg=new Date(fc.getFullYear(),fc.getMonth()>=6?6:0,1);
+var gStart=sg<fi?fi:sg;
+var diasG=Math.round((fc-gStart)/864e5);
+if(diasG<1)diasG=1;
+var gt=(sueldo+asig)*diasG/180,bon=gt*0.09;
+var mo=fc.getMonth();
+var cs=mo>=4&&mo<=9?new Date(fc.getFullYear(),4,1):mo>=10?new Date(fc.getFullYear(),10,1):new Date(fc.getFullYear()-1,10,1);
+var cStart=cs<fi?fi:cs;
+var diasC=Math.round((fc-cStart)/864e5);
+if(diasC<1)diasC=1;
+var cts=(sueldo+asig)/12*(diasC/30);
+var sueldoMes=sueldo*fc.getDate()/30;
+var despido=$('form').elements['motivo'].value==='despido';
+var ind=despido?sueldo*1.5*(t.y+t.m/12+t.d/360):0;
+var rows=[
+['Remuneración por días del último mes ('+fc.getDate()+'÷30)',sueldoMes],
+['Vacaciones truncas ('+vtMeses+' mes'+(vtMeses!==1?'es':'')+')',vt],
+['Gratificación trunca',gt],
+['Bonificación extraordinaria (9%)',bon],
+['CTS trunca',cts]
+];
+if(despido)rows.push(['Indemnización por despido arbitrario',ind]);
+var total=rows.reduce(function(s,r){return s+r[1]},0);
+$('tbody').innerHTML=rows.map(function(r){return'<tr><td>'+r[0]+'</td><td>'+fmtPEN(r[1])+'</td></tr>'}).join('');
+$('total').textContent=fmtPEN(total);
+$('meta').textContent=(t.y+' año'+(t.y!==1?'s':'')+', '+t.m+' mes'+(t.m!==1?'es':'')+' y '+t.d+' días')+' · '+(despido?'incluye indemnización':'sin indemnización por renuncia');
+$('result').hidden=false;
+$('copy').onclick=function(){
+var txt='Mi liquidación estimada (Calcula.pe)\n'+rows.map(function(r){return'- '+r[0]+': '+fmtPEN(r[1])}).join('\n')+'\nTOTAL: '+fmtPEN(total)+'\nIngreso: '+fiStr+' · Cese: '+fcStr;
+navigator.clipboard&&navigator.clipboard.writeText(txt);
+};
+}
+})();
+</script>
+</body>
+</html>

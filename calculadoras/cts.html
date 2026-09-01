@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de CTS Perú 2026 | Calcula.pe</title>
+<meta name="description" content="Calcula el depósito semestral de CTS en segundos. Herramienta gratuita para trabajadores peruanos.">
+<link rel="canonical" href="https://calcula.pe/calculadoras/cts.html">
+<meta property="og:title" content="Calculadora de CTS">
+<meta property="og:description" content="Calcula cuánto te corresponde en tu próximo depósito de CTS.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://calcula.pe/calculadoras/cts.html">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de CTS","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://calcula.pe/calculadoras/cts.html","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"},"inLanguage":"es-PE"}</script>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="/"><span class="logo-mark">S/</span> <span class="logo-dot">Calcula.pe</span></a>
+<nav>
+<a href="/#calculadoras">Calculadoras</a>
+<a href="/#guias">Guías</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="/">Inicio</a> › <a href="/#calculadoras">Calculadoras</a> › CTS</p>
+<h1 class="title">Calculadora de CTS</h1>
+<p class="intro">El depósito de CTS se realiza dos veces al año: en mayo (por el semestre noviembre–abril) y en noviembre (por el semestre mayo–octubre). Ingresa tus datos y verifica cuánto te toca.</p>
+<div class="ad-slot" data-pos="top"><span>Espacio publicitario</span></div>
+<div class="calc-layout">
+<div class="card">
+<form id="form" novalidate>
+<div class="field">
+<label for="sueldo">Sueldo mensual bruto (S/)</label>
+<input type="number" id="sueldo" min="0" step="0.01" placeholder="Ej. 2500" required>
+</div>
+<label class="checkline">
+<input type="checkbox" id="asig">
+Asignación familiar (S/
+<input type="number" id="asigMonto" value="113" min="0" step="0.01" style="width:90px;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px">)
+</label>
+<div class="field">
+<label for="grat">Gratificación recibida este semestre (S/, opcional)</label>
+<input type="number" id="grat" min="0" step="0.01" placeholder="0">
+<span class="hint">Incluye solo si ya recibiste tu gratificación este semestre</span>
+</div>
+<div class="field">
+<label for="dias">Días trabajados en el semestre</label>
+<input type="number" id="dias" min="1" max="180" value="180">
+<span class="hint">Semestre noviembre–abril: hasta 181 días. Semestre mayo–octubre: hasta 184 días.</span>
+</div>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Calcular CTS</button>
+<p class="err" id="err"></p>
+</form>
+</div>
+<div id="result" class="result" hidden>
+<p class="rlabel">Depósito aproximado de CTS</p>
+<p class="rtotal" id="total">S/ 0.00</p>
+<table class="breakdown">
+<tbody id="tbody"></tbody>
+</table>
+<button class="btn btn-copy" id="copy" style="width:100%;justify-content:center;margin-top:16px">Copiar resumen</button>
+</div>
+</div>
+</div>
+<div class="ad-slot" data-pos="mid"><span>Espacio publicitario</span></div>
+<div class="prose">
+<h2>¿Cómo se calcula?</h2>
+<p>La CTS equivale a un sexto (1/6) de la remuneración computable por cada mes completo de servicios dentro del semestre. La fórmula simplificada es:</p>
+<p style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px;font-family:monospace;margin:12px 0">CTS = (Remuneración computable ÷ 6) × (días ÷ 30)</p>
+<p>La <strong>remuneración computable</strong> incluye el sueldo básico y la asignación familiar. Si ya recibiste gratificación este semestre, esta herramienta suma 1/12 de ese monto para mayor precisión.</p>
+<div class="related">
+<a class="card" href="liquidacion.html"><h3>Liquidación</h3><p>Calcula todo junto al terminar tu empleo.</p></a>
+<a class="card" href="../guias/cts-guia.html"><h3>Guía de CTS</h3><p>Plazos, cómo reclamar y retiré.</p></a>
+</div>
+</div>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">Calcula.pe</strong><p style="font-size:.9rem;margin-top:8px">Herramientas laborales gratuitas para Perú.</p></div>
+<div>
+<h4>Calculadoras</h4>
+<a href="/calculadoras/liquidacion.html">Liquidación</a>
+<a href="/calculadoras/cts.html">CTS</a>
+<a href="/calculadoras/gratificacion.html">Gratificación</a>
+<a href="/calculadoras/igv.html">IGV</a>
+</div>
+<div>
+<h4>Guías</h4>
+<a href="/guias/cts-guia.html">Guía de CTS</a>
+<a href="/guias/liquidacion-paso-a-paso.html">Liquidación paso a paso</a>
+<a href="/sobre.html">Sobre nosotros</a>
+<a href="/politica-privacidad.html">Política de privacidad</a>
+</div>
+</div>
+<p class="fine">© 2026 Calcula.pe · Cálculos referenciales basados en D.S. 001-97-TR.</p>
+</div>
+</footer>
+<script src="/assets/js/utils.js"></script>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+$('asig').addEventListener('change',function(){$('asigMonto').parentElement.style.display=$('asig').checked?'inline-flex':'none'});
+$('asigMonto').parentElement.style.display='none';
+$('form').addEventListener('submit',function(e){e.preventDefault();calc()});
+function calc(){
+var err=$('err');err.textContent='';
+var sueldo=toNum($('sueldo').value);
+var asig=$('asig').checked?toNum($('asigMonto').value):0;
+var grat=toNum($('grat').value)||0;
+var dias=parseInt($('dias').value,10)||180;
+if(!sueldo||sueldo<=0){err.textContent='Ingresa un sueldo válido.';return}
+if(dias<1||dias>184){err.textContent='Los días deben estar entre 1 y 184.';return}
+var rc=sueldo+asig+(grat/12);
+var cts=rc/6*(dias/30);
+var total=Math.round(cts*100)/100;
+var rows=[
+['Remuneración computable mensual',rc],
+['CTS semestral',total]
+];
+$('tbody').innerHTML=rows.map(function(r){return'<tr><td>'+r[0]+'</td><td>'+fmtPEN(r[1])+'</td></tr>'}).join('');
+$('total').textContent=fmtPEN(total);
+$('result').hidden=false;
+$('copy').onclick=function(){
+var txt='CTS estimada (Calcula.pe): '+fmtPEN(total)+'\nRemuneración computable: '+fmtPEN(rc)+'\nDías del semestre: '+dias;
+navigator.clipboard&&navigator.clipboard.writeText(txt);
+};
+}
+})();
+</script>
+</body>
+</html>

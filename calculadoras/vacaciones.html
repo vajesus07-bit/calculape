@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de Vacaciones Truncas Perú 2026 | Calcula.pe</title>
+<meta name="description" content="Calcula el dinero por vacaciones no gozadas al dejar el trabajo. Vacaciones truncas según legislación laboral peruana.">
+<link rel="canonical" href="https://calcula.pe/calculadoras/vacaciones.html">
+<meta property="og:title" content="Calculadora de Vacaciones Truncas">
+<meta property="og:description" content="Calcula cuánto te corresponde por vacaciones truncas.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://calcula.pe/calculadoras/vacaciones.html">
+<link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Vacaciones Truncas","applicationCategory":"FinanceApplication","operatingSystem":"Web","url":"https://calcula.pe/calculadoras/vacaciones.html","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"},"inLanguage":"es-PE"}</script>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="/"><span class="logo-mark">S/</span> <span class="logo-dot">Calcula.pe</span></a>
+<nav>
+<a href="/#calculadoras">Calculadoras</a>
+<a href="/#guias">Guías</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="/">Inicio</a> › <a href="/#calculadoras">Calculadoras</a> › Vacaciones truncas</p>
+<h1 class="title">Vacaciones truncas</h1>
+<p class="intro">Cuando dejas un trabajo, tienes derecho a que te paguen los días de vacaciones acumuladas y no tomadas. Ingresa tu sueldo y el tiempo trabajado en el último año para calcular cuánto te corresponde.</p>
+<div class="ad-slot" data-pos="top"><span>Espacio publicitario</span></div>
+<div class="calc-layout">
+<div class="card">
+<form id="form" novalidate>
+<div class="field">
+<label for="sueldo">Sueldo mensual bruto (S/)</label>
+<input type="number" id="sueldo" min="0" step="0.01" placeholder="Ej. 2500" required>
+</div>
+<div class="row">
+<div class="field">
+<label for="meses">Meses completos trabajados en el último año</label>
+<input type="number" id="meses" min="0" max="11" value="0">
+</div>
+<div class="field">
+<label for="dias">Días adicionales (0–29)</label>
+<input type="number" id="dias" min="0" max="29" value="0">
+</div>
+</div>
+<p class="hint" style="margin-bottom:16px">Si tomaste vacaciones	gozadas este año, réstalas del resultado. Cada mes = 2,5 días de vacaciones (30 días ÷ 12 meses).</p>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Calcular vacaciones truncas</button>
+<p class="err" id="err"></p>
+</form>
+</div>
+<div id="result" class="result" hidden>
+<p class="rlabel">Monto aproximado por vacaciones truncas</p>
+<p class="rtotal" id="total">S/ 0.00</p>
+<table class="breakdown">
+<tbody id="tbody"></tbody>
+</table>
+<button class="btn btn-copy" id="copy" style="width:100%;justify-content:center;margin-top:16px">Copiar resumen</button>
+</div>
+</div>
+</div>
+<div class="ad-slot" data-pos="mid"><span>Espacio publicitario</span></div>
+<div class="prose">
+<h2>¿Cómo se calcula?</h2>
+<p>El trabajador tiene derecho a 30 días calendario de vacaciones por cada año completo de servicios (2,5 días por mes). Al terminar la relación laboral, si el último año está incompleto, se pagan los días generados y no gozados:</p>
+<p style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px;font-family:monospace;margin:12px 0">Vacaciones truncas = Sueldo × (meses + días÷30) ÷ 12</p>
+<p>Si trabajaste menos de 15 días en un mes, este no se computa. Los 15 días o más sí cuentan como mes completo a efectos del cálculo.</p>
+<div class="related">
+<a class="card" href="liquidacion.html"><h3>Liquidación</h3><p>Calcula todo junto al terminar tu empleo.</p></a>
+<a class="card" href="../guias/vacaciones-guia.html"><h3>Guía de vacaciones</h3><p>Truncas vs. gozadas, plazos y excepciones.</p></a>
+</div>
+</div>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">Calcula.pe</strong><p style="font-size:.9rem;margin-top:8px">Herramientas laborales gratuitas para Perú.</p></div>
+<div>
+<h4>Calculadoras</h4>
+<a href="/calculadoras/liquidacion.html">Liquidación</a>
+<a href="/calculadoras/cts.html">CTS</a>
+<a href="/calculadoras/gratificacion.html">Gratificación</a>
+<a href="/calculadoras/igv.html">IGV</a>
+</div>
+<div>
+<h4>Guías</h4>
+<a href="/guias/vacaciones-guia.html">Vacaciones truncas</a>
+<a href="/guias/liquidacion-paso-a-paso.html">Liquidación paso a paso</a>
+<a href="/sobre.html">Sobre nosotros</a>
+<a href="/politica-privacidad.html">Política de privacidad</a>
+</div>
+</div>
+<p class="fine">© 2026 Calcula.pe · Cálculos referenciales basados en D.S. 001-97-TR.</p>
+</div>
+</footer>
+<script src="/assets/js/utils.js"></script>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id)};
+$('form').addEventListener('submit',function(e){e.preventDefault();calc()});
+function calc(){
+var err=$('err');err.textContent='';
+var sueldo=toNum($('sueldo').value);
+var meses=parseInt($('meses').value,10)||0;
+var dias=parseInt($('dias').value,10)||0;
+if(!sueldo||sueldo<=0){err.textContent='Ingresa un sueldo válido.';return}
+if(meses<0||meses>11||dias<0||dias>29){err.textContent='Revisa los valores de meses y días.';return}
+var total=Math.round(sueldo*(meses+dias/30)/12*100)/100;
+var rows=[
+['Sueldo mensual',sueldo],
+['Tiempo pendiente: '+meses+' mes'+(meses!==1?'es':'')+' y '+dias+' días','—'],
+['Vacaciones truncas',total]
+];
+$('tbody').innerHTML=rows.map(function(r){return'<tr><td>'+r[0]+'</td><td>'+(r[1]==='—'?r[1]:fmtPEN(r[1]))+'</td></tr>'}).join('');
+$('total').textContent=fmtPEN(total);
+$('result').hidden=false;
+$('copy').onclick=function(){
+var txt='Vacaciones truncas estimadas (Calcula.pe): '+fmtPEN(total)+'\nSueldo: '+fmtPEN(sueldo)+' · '+meses+' meses y '+dias+' días';
+navigator.clipboard&&navigator.clipboard.writeText(txt);
+};
+}
+})();
+</script>
+</body>
+</html>
