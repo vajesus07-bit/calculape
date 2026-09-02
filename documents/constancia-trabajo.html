@@ -173,13 +173,12 @@ doc.line(pageW-70,line,pageW-20,line);line+=3;doc.text('Trabajador',pageW-70,lin
 doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});
 generatedDoc=doc;
 
-doc.getBlob(function(blob){
-lastBlobUrl=URL.createObjectURL(blob);
+var blob = doc.output('blob');
+lastBlobUrl = URL.createObjectURL(blob);
 preview.innerHTML='<iframe src="'+lastBlobUrl+'"></iframe>';
 actions.style.display='flex';
-saveToHistory('Constancia de Trabajo - '+traNombre,lastBlobUrl);
+saveToHistory('Constancia de Trabajo - '+traNombre, lastBlobUrl);
 hideLoading();
-});
 }
 
 document.getElementById('download').addEventListener('click',function(){

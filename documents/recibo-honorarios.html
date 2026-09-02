@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="es-PE">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src 'self' blob: https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -241,13 +241,12 @@ generatedDoc=doc;
 
 doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});
 
-doc.getBlob(function(blob){
-lastBlobUrl=URL.createObjectURL(blob);
+var blob = doc.output('blob');
+lastBlobUrl = URL.createObjectURL(blob);
 preview.innerHTML='<iframe src="'+lastBlobUrl+'"></iframe>';
 actions.style.display='flex';
-saveToHistory('Recibo por Honorarios - '+emiNombre,lastBlobUrl);
+saveToHistory('Recibo por Honorarios - '+emiNombre, lastBlobUrl);
 hideLoading();
-});
 }
 document.getElementById('download').addEventListener('click',function(){if(generatedDoc)generatedDoc.save('recibo-honorarios.pdf')});
 })();
