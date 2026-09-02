@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="es-PE">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="X-Frame-Options" content="DENY">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+<meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1B6E2E">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
 <script>
@@ -27,6 +34,9 @@
 <header class="topbar">
 <div class="wrap topbar-in">
 <a class="logo" href="../index.html"><span class="logo-mark">D</span> DocsPeru</a>
+<button class="menu-toggle" aria-label="Menú" onclick="document.querySelector('.topbar nav').classList.toggle('open')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
 <nav>
 <a href="../index.html">Herramientas</a>
 <a href="../index.html#como-funciona">Cómo funciona</a>
