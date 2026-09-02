@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="es-PE">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src 'self' blob: https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cdnjs.cloudflare.com; frame-src 'self' blob: https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="robots" content="index, follow">
@@ -240,48 +239,48 @@ doc.setFont('helvetica');
 line=10;
 doc.setFont('helvetica','bold');
 doc.setFontSize(15);
-doc.text('RECIBO DE VENTA',pageW/2,{line},'center');line+=6;
+doc.text('RECIBO DE VENTA',pageW/2,line,'center');line+=6;
 doc.setFont('helvetica','normal');
 doc.setFontSize(7.5);
-doc.text('Documento referencial (no válido como comprobante de pago SUNAT)',pageW/2,{line},'center');line+=5;
+doc.text('Documento referencial (no válido como comprobante de pago SUNAT)',pageW/2,line,'center');line+=5;
 doc.line(20,line,pageW-20,line);line+=5;
 doc.setFontSize(8.5);
 doc.setFont('helvetica','bold');
-doc.text('VENDEDOR',20,{line});doc.text('CLIENTE',pageW/2,{line});line+=4;
+doc.text('VENDEDOR',20,line);doc.text('CLIENTE',pageW/2,line);line+=4;
 doc.setFont('helvetica','normal');
-doc.text(venNombre,20,{line});doc.text(cliNombre,pageW/2,{line});line+=3.5;
-if(venRuc){doc.text('RUC: '+venRuc,20,{line});}
-if(cliDoc){doc.text('DNI/RUC: '+cliDoc,pageW/2,{line});}line+=3.5;
-doc.text('Fecha: '+dateToStr(dFecha),20,{line});line+=5;
+doc.text(venNombre,20,line);doc.text(cliNombre,pageW/2,line);line+=3.5;
+if(venRuc){doc.text('RUC: '+venRuc,20,line);}
+if(cliDoc){doc.text('DNI/RUC: '+cliDoc,pageW/2,line);}line+=3.5;
+doc.text('Fecha: '+dateToStr(dFecha),20,line);line+=5;
 doc.line(20,line,pageW-20,line);line+=5;
 doc.setFont('helvetica','bold');
 doc.setFontSize(8.5);
 var colN=20;var colQ=115;var colP=145;var colT=pageW-20;
-doc.text('Descripción',colN,{line});doc.text('Cant.',colQ,{line});doc.text('Precio',colP,{line});doc.text('Total',colT,{line},'right');line+=2;
-doc.line(20,{line},pageW-20,{line});line+=3;
+doc.text('Descripción',colN,line);doc.text('Cant.',colQ,line);doc.text('Precio',colP,line);doc.text('Total',colT,line,'right');line+=2;
+doc.line(20,line,pageW-20,line);line+=3;
 doc.setFont('helvetica','normal');
 doc.setFontSize(8.5);
 items.forEach(function(item){
 var descLines=doc.splitTextToSize(item.desc,90);
-doc.text(descLines,colN,{line});line+=descLines.length*4;
-doc.text(String(item.qty),colQ,{line});line+=4;
-doc.text('S/ '+item.price.toFixed(2),colP,{line});line+=4;
-doc.text('S/ '+item.total.toFixed(2),colT,{line},'right');line+=6;
+doc.text(descLines,colN,line);line+=descLines.length*4;
+doc.text(String(item.qty),colQ,line);line+=4;
+doc.text('S/ '+item.price.toFixed(2),colP,line);line+=4;
+doc.text('S/ '+item.total.toFixed(2),colT,line,'right');line+=6;
 });
-doc.line(20,{line},pageW-20,{line});line+=4;
+doc.line(20,line,pageW-20,line);line+=4;
 doc.setFont('helvetica','bold');
 doc.setFontSize(9);
-doc.text('Subtotal:',130,{line});doc.text('S/ '+subtotal.toFixed(2),colT,{line},'right');line+=5;
-doc.text('IGV (18%):',130,{line});doc.text('S/ '+igv.toFixed(2),colT,{line},'right');line+=5;
+doc.text('Subtotal:',130,line);doc.text('S/ '+subtotal.toFixed(2),colT,line,'right');line+=5;
+doc.text('IGV (18%):',130,line);doc.text('S/ '+igv.toFixed(2),colT,line,'right');line+=5;
 doc.setFontSize(11);
-doc.text('TOTAL:',130,{line});doc.text('S/ '+total.toFixed(2),colT,{line},'right');line+=8;
+doc.text('TOTAL:',130,line);doc.text('S/ '+total.toFixed(2),colT,line,'right');line+=8;
 var totalWords='Son: '+numToWords(Math.floor(total))+' soles con '+numToWords(Math.round((total-Math.floor(total))*100))+' céntimos.';
 var totalLines=doc.splitTextToSize(totalWords,pageW-40);
 doc.setFontSize(8);
-doc.text(totalLines,20,{line});line+=totalLines.length*4+6;
-doc.line(20,{line},pageW-20,{line});line+=4;
+doc.text(totalLines,20,line);line+=totalLines.length*4+6;
+doc.line(20,line,pageW-20,line);line+=4;
 doc.setFontSize(8);
-doc.text('Este recibo no tiene validez tributaria. Para operaciones formales, emite tu comprobante electrónico en SUNAT.',20,{line});line+=3;
+doc.text('Este recibo no tiene validez tributaria. Para operaciones formales, emite tu comprobante electrónico en SUNAT.',20,line);line+=3;
 generatedDoc=doc;
 
 doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});

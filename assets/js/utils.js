@@ -1,6 +1,6 @@
 function fmtPEN(n){return new Intl.NumberFormat('es-PE',{style:'currency',currency:'PEN',maximumFractionDigits:2}).format(Number(n)||0)}
 function toNum(v){var n=parseFloat(String(v??'').replace(/,/g,''));return Number.isFinite(n)?n:0}
-function dateToStr(d){var dd=String(d.getDate()).padStart(2,'0');var mm=String(d.getMonth()+1).padStart(2,'0');var yyyy=d.getFullYear();return dd+'/'+mm+'/'+yyyy}
+function dateToStr(d){if(!d||isNaN(d.getTime()))return'';var dd=String(d.getDate()).padStart(2,'0');var mm=String(d.getMonth()+1).padStart(2,'0');var yyyy=d.getFullYear();return dd+'/'+mm+'/'+yyyy}
 function numToWords(n){var UNITS=['','UN','DOS','TRES','CUATRO','CINCO','SEIS','SIETE','OCHO','NUEVE'];var TEENS=['DIEZ','ONCE','DOCE','TRECE','CATORCE','QUINCE','DIECISÉIS','DIECISIETE','DIECIOCHO','DIECINUEVE'];var TENS=['','DIEZ','VEINTE','TREINTA','CUARENTA','CINCUENTA','SESENTA','SETENTA','OCHENTA','NOVENTA'];var HUNDREDS=['','CIENTO','DOSCIENTOS','TRESCIENTOS','CUATROCIENTOS','QUINIENTOS','SEISCIENTOS','SETECIENTOS','OCHOCIENTOS','NOVECIENTOS'];if(n===0)return'CERO';if(n===100)return'CIEN';var r='';var t=Math.floor(n/1000);if(t>0){if(t===1)r+='MIL';else r+=numToWords(t)+' MIL';n%=1000}t=Math.floor(n/100);if(t>0){r+=HUNDREDS[t];n%=100;if(n>0)r+=' '}t=Math.floor(n/10);if(t>=2){r+=TENS[t];n%=10;if(n>0)r+=' Y '}if(t===1){r+=TEENS[n];return r.trim()}t=Math.floor(n);if(t>0){if(r&&t>0&&r.slice(-1)!==' ')r+=' ';r+=UNITS[t]}return r.trim()}
 
 /* Dark Mode */

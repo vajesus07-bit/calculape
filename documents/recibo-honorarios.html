@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="es-PE">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src 'self' blob: https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cdnjs.cloudflare.com; frame-src 'self' blob: https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="robots" content="index, follow">
@@ -181,62 +180,62 @@ doc.setFont('helvetica');
 line=12;
 doc.setFont('helvetica','bold');
 doc.setFontSize(16);
-doc.text('RECIBO POR HONORARIOS',pageW/2,{line},'center');line+=8;
+doc.text('RECIBO POR HONORARIOS',pageW/2,line,'center');line+=8;
 doc.setFont('helvetica','normal');
 doc.setFontSize(8);
-doc.text('Documento referencial (no válido para deducción fiscal)',pageW/2,{line},'center');line+=8;
+doc.text('Documento referencial (no válido para deducción fiscal)',pageW/2,line,'center');line+=8;
 doc.line(20,line,pageW-20,line);line+=6;
 doc.setFontSize(9);
 doc.setFont('helvetica','bold');
-doc.text('EMISOR',20,{line});line+=4;
+doc.text('EMISOR',20,line);line+=4;
 doc.setFont('helvetica','normal');
-doc.text('Nombre: '+emiNombre,20,{line});line+=4;
-if(emiRuc){doc.text('RUC: '+emiRuc,20,{line});line+=4}
-if(emiDireccion){doc.text('Dirección: '+emiDireccion,20,{line});line+=4}
+doc.text('Nombre: '+emiNombre,20,line);line+=4;
+if(emiRuc){doc.text('RUC: '+emiRuc,20,line);line+=4}
+if(emiDireccion){doc.text('Dirección: '+emiDireccion,20,line);line+=4}
 line+=2;
 doc.setFont('helvetica','bold');
-doc.text('RECEPTOR',20,{line});line+=4;
+doc.text('RECEPTOR',20,line);line+=4;
 doc.setFont('helvetica','normal');
-doc.text('Nombre: '+recNombre,20,{line});line+=4;
-if(recRuc){doc.text((recRuc.length===11?'RUC: ':'DNI: ')+recRuc,20,{line});line+=4}
+doc.text('Nombre: '+recNombre,20,line);line+=4;
+if(recRuc){doc.text((recRuc.length===11?'RUC: ':'DNI: ')+recRuc,20,line);line+=4}
 line+=2;
 doc.setFont('helvetica','bold');
-doc.text('CONCEPTO',20,{line});line+=4;
+doc.text('CONCEPTO',20,line);line+=4;
 doc.setFont('helvetica','normal');
 var servLines=doc.splitTextToSize(servicio,pageW-40);
-doc.text(servLines,20,{line});line+=servLines.length*4.5+3;
+doc.text(servLines,20,line);line+=servLines.length*4.5+3;
 line+=2;
 doc.line(20,line,pageW-20,line);line+=6;
 doc.setFontSize(10);
 var col1=20;var col2=pageW-20;
 var rowH=6;
 doc.setFont('helvetica','bold');
-doc.text('Descripción',col1,{line});
-doc.text('Monto',col2,{line},'right');line+=rowH;
+doc.text('Descripción',col1,line);
+doc.text('Monto',col2,line,'right');line+=rowH;
 doc.setFont('helvetica','normal');
-doc.line(20,{line},pageW-20,{line});line+=1;
-doc.text('Honorarios por servicio',col1,{line});
-doc.text('S/ '+monto.toFixed(2),col2,{line},'right');line+=rowH;
-doc.line(20,{line},pageW-20,{line});line+=2;
+doc.line(20,line,pageW-20,line);line+=1;
+doc.text('Honorarios por servicio',col1,line);
+doc.text('S/ '+monto.toFixed(2),col2,line,'right');line+=rowH;
+doc.line(20,line,pageW-20,line);line+=2;
 doc.setFont('helvetica','bold');
-doc.text('Subtotal',col1,{line});
-doc.text('S/ '+monto.toFixed(2),col2,{line},'right');line+=rowH-2;
-doc.text('IGV (18%)',col1,{line});
-doc.text('S/ '+igv.toFixed(2),col2,{line},'right');line+=rowH-2;
-doc.line(20,{line},pageW-20,{line});line+=1;
+doc.text('Subtotal',col1,line);
+doc.text('S/ '+monto.toFixed(2),col2,line,'right');line+=rowH-2;
+doc.text('IGV (18%)',col1,line);
+doc.text('S/ '+igv.toFixed(2),col2,line,'right');line+=rowH-2;
+doc.line(20,line,pageW-20,line);line+=1;
 doc.setFontSize(11);
-doc.text('TOTAL A PAGAR',col1,{line});
-doc.text('S/ '+total.toFixed(2),col2,{line},'right');line+=rowH+4;
+doc.text('TOTAL A PAGAR',col1,line);
+doc.text('S/ '+total.toFixed(2),col2,line,'right');line+=rowH+4;
 var totalWords='Son: '+numToWords(Math.floor(total))+' soles con '+numToWords(Math.round((total-Math.floor(total))*100))+' céntimos.';
 var totalLines=doc.splitTextToSize(totalWords,pageW-40);
 doc.setFontSize(8);
-doc.text(totalLines,20,{line});line+=totalLines.length*4+4;
+doc.text(totalLines,20,line);line+=totalLines.length*4+4;
 line+=4;
 doc.setFontSize(9);
-doc.text('Fecha de emisión: '+dateToStr(dFecha),20,{line});line+=12;
-doc.line(20,{line},70,{line});line+=3;
+doc.text('Fecha de emisión: '+dateToStr(dFecha),20,line);line+=12;
+doc.line(20,line,70,line);line+=3;
 doc.setFontSize(8);
-doc.text('Firma del emisor',20,{line});
+doc.text('Firma del emisor',20,line);
 generatedDoc=doc;
 
 doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});
