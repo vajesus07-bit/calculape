@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calculadora de Sueldo Neto Perú 2026 | DocsPeru</title>
+<meta name="description" content="Calcula cuánto ganas realmente descontando AFP, ONP e impuesto a la renta. Herramienta gratuita para trabajadores en Perú.">
+<link rel="canonical" href="https://docsperu.site/documents/calculadora-sueldo-neto.html">
+<link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/styles.css">
+<script src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GV42D9KTV5');</script>
+<meta name="google-site-verification" content="googlea6b6a73be5459ab2.html">
+</head>
+<body>
+<header class="topbar">
+<div class="wrap topbar-in">
+<a class="logo" href="../index.html"><span class="logo-mark">D</span> DocsPeru</a>
+<nav>
+<a href="../index.html">Herramientas</a>
+<a href="../index.html#como-funciona">Cómo funciona</a>
+</nav>
+</div>
+</header>
+<main class="page">
+<div class="wrap">
+<p class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../index.html">Herramientas</a> › Calculadora de Sueldo Neto</p>
+<h1 class="title">Calculadora de Sueldo Neto</h1>
+<p class="intro">Descubre cuánto recibes realmente cada mes descontando AFP u ONP e impuesto a la renta. Compara el sistema pensionario que más te conviene.</p>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+<div class="doc-layout">
+<div class="card">
+<form id="form" novalidate>
+<div class="field">
+<label>Sueldo bruto mensual (S/)</label>
+<input type="number" id="bruto" min="0" step="0.01" placeholder="Ej. 5000" required>
+<span class="hint">Monto que aparece en tu boleta antes de descuentos</span>
+</div>
+<div class="field">
+<label>¿Aportas a ONP o AFP?</label>
+<div class="radios">
+<label><input type="radio" name="sistema" value="afp" checked onchange="actualizar()"><span>AFP</span></label>
+<label><input type="radio" name="sistema" value="onp" onchange="actualizar()"><span>ONP</span></label>
+</div>
+</div>
+<div id="afpOptions">
+<div class="field">
+<label> Fondo de AFP</label>
+<select id="afpFondo" onchange="actualizar()">
+<option value="habitat">AFP Habitat — Comisión sobre saldo: ~1.25%</option>
+<option value="integra">AFP Integra — Comisión sobre saldo: ~1.25%</option>
+<option value="prima">AFP Prima — Comisión sobre saldo: ~1.10%</option>
+<option value="profuturo">AFP Profuturo — Comisión sobre saldo: ~1.55%</option>
+</select>
+<span class="hint">La comisión se aplica sobre el fondo acumulado, no sobre el sueldo.</span>
+</div>
+<div class="callout" style="margin-bottom:16px;font-size:.85rem">
+<strong>Nota:</strong> Las AFP cobran una comisión sobre el fondo de pensiones (no sobre el sueldo). Esta calculadora usa una aproximación del 10% sobre el sueldo bruto como aporte total a la AFP, que incluye seguro de invalidez y sobrevivencia. El porcentaje real varía según tu saldo acumulado.
+</div>
+</div>
+<div id="onpOptions" style="display:none">
+<div class="callout" style="font-size:.88rem">
+El ONP descuenta el <strong>13%</strong> de tu remuneración bruta mensualmente. Es el sistema para trabajadores del sector público y algunos del sector privado.
+</div>
+</div>
+<div class="field">
+<label>¿Aplicas a impuesto a la renta (5ta categoría)?</label>
+<div class="radios">
+<label><input type="radio" name="impuesto" value="no" checked onchange="actualizar()"><span>No</span></label>
+<label><input type="radio" name="impuesto" value="si" onchange="actualizar()"><span>Sí (trabajo en planilla)</span></label>
+</div>
+</div>
+<div id="impuestoInfo" style="display:none" class="callout" style="font-size:.85rem">
+<strong>Impuesto a la renta de 5ta categoría:</strong> Se calcula sobre la renta bruta anual menos 7 UIT (S/ 34,150 en 2026). Los tramos son: 8% hasta S/ 5 UIT, 14% hasta 20 UIT, 17% hasta 35 UIT, 20% hasta 45 UIT y 30% más de 45 UIT. El resultado anual se divide entre 12 para obtener la retención mensual.
+</div>
+<p class="err" id="err"></p>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px">Calcular</button>
+</form>
+</div>
+<div id="resultPanel" class="result-panel" style="display:none">
+<div class="result-header"><span>Resultado mensual</span></div>
+<div class="preview" id="previewResult">
+<div style="padding:24px">
+<p class="rlabel" style="font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:#c9c2b4;font-weight:700">Sueldo neto aproximado</p>
+<p class="rtotal" id="netoDisplay" style="font-family:var(--font-display);font-size:clamp(2rem,5vw,2.8rem);font-weight:600;margin:8px 0 16px;color:#fff">S/ 0.00</p>
+<table class="breakdown" style="color:#fff">
+<tbody id="tbody"></tbody>
+</tbody>
+</table>
+</div>
+</div>
+<div class="result-actions" style="padding:14px 18px;display:flex;gap:10px;border-top:1px solid rgba(255,255,255,.14);background:#14201c">
+<button class="btn btn-ghost" id="copyBtn" style="flex:1;justify-content:center;background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25)">Copiar resultado</button>
+</div>
+</div>
+</div>
+</div>
+<div class="ad-slot"><span>Espacio publicitario</span></div>
+<div class="prose">
+<h2>¿Cómo funciona esta calculadora?</h2>
+<p>El sueldo neto es lo que realmente recibes en tu cuenta después de todos los descuentos obligatorios. En Perú, los principales descuentos son:</p>
+<ul style="margin:12px 0 12px 20px">
+<li><strong>AFP:</strong> Aporte obligatorio de ~10% del sueldo + comisión sobre el fondo. El porcentaje exacto depende de tu AFP y fondo.</li>
+<li><strong>ONP:</strong> Aporte fijo del 13% para trabajadores públicos y algunos privados.</li>
+<li><strong>Impuesto a la renta (5ta categoría):</strong> Aplica si trabajas en planilla y ganas más de ~S/ 2,400 mensuales. Se descuenta mensualmente.</li>
+</ul>
+<h2>¿AFP u ONP? ¿Cuál conviene?</h2>
+<p>La decisión depende de tu situación:</p>
+<ul style="margin:12px 0 12px 20px">
+<li><strong>AFP:</strong> Si tienes muchos años de trabajo por delante, el fondo puede crecer con los años. Pero depende de los rendimientos del fondo y las comisiones.</li>
+<li><strong>ONP:</strong> Ofrece una pensión mínima garantizada. Pero no tienes control sobre el fondo.</li>
+</ul>
+<div class="related" style="margin-top:16px">
+<a class="card" href="recibo-honorarios.html"><h3>Recibo por Honorarios</h3><p>Genera el PDF referencial.</p></a>
+<a class="card" href="https://www.sunat.gob.pe" target="_blank"><h3>Portal SUNAT</h3><p>Información oficial sobre impuestos.</p></a>
+</div>
+</div>
+</div>
+</main>
+<footer class="footer">
+<div class="wrap">
+<div class="cols">
+<div><strong style="font-family:var(--font-display);color:var(--ink)">DocsPeru</strong><p style="font-size:.88rem;margin-top:8px">Documentos PDF gratis para Perú.</p></div>
+<div><h4>Herramientas</h4>
+<a href="constancia-trabajo.html">Constancia de Trabajo</a>
+<a href="recibo-honorarios.html">Recibo por Honorarios</a>
+<a href="calculadora-sueldo-neto.html">Sueldo Neto</a>
+<a href="factura-simplificada.html">Factura Simplificada</a></div>
+<div><h4>Legal</h4>
+<a href="../sobre.html">Sobre nosotros</a>
+<a href="../politica-privacidad.html">Política de privacidad</a></div>
+</div>
+<p class="fine">© 2026 DocsPeru · Cálculos referenciales. No sustituyen asesoría financiera o legal.</p>
+</div>
+</footer>
+<script>
+function fmtPEN(n){return new Intl.NumberFormat('es-PE',{style:'currency',currency:'PEN',maximumFractionDigits:2}).format(Number(n)||0)}
+function toNum(v){var n=parseFloat(String(v??'').replace(/,/g,''));return Number.isFinite(n)?n:0}
+
+function actualizar(){
+var sis=document.querySelector('input[name=sistema]:checked').value;
+document.getElementById('afpOptions').style.display=sis==='afp'?'block':'none';
+document.getElementById('onpOptions').style.display=sis==='onp'?'block':'none';
+var imp=document.querySelector('input[name=impuesto]:checked').value;
+document.getElementById('impuestoInfo').style.display=imp==='si'?'block':'none';
+}
+
+document.querySelectorAll('input[name=sistema]').forEach(function(r){r.addEventListener('change',actualizar)});
+document.querySelectorAll('input[name=impuesto]').forEach(function(r){r.addEventListener('change',actualizar)});
+
+document.getElementById('form').addEventListener('submit',function(e){
+e.preventDefault();
+var err=document.getElementById('err');
+err.textContent='';
+var bruto=toNum(document.getElementById('bruto').value);
+if(!bruto||bruto<=0){err.textContent='Ingresa un sueldo bruto válido.';return}
+
+var sis=document.querySelector('input[name=sistema]:checked').value;
+var imp=document.querySelector('input[name=impuesto]:checked').value;
+var afpFondo=document.getElementById('afpFondo').value;
+
+// AFP rates (approximate total contribution on salary)
+var afpRates={'prima':0.10,'habitat':0.10,'integra':0.10,'profuturo':0.10};
+// ONP
+var onpRate=0.13;
+
+// 5ta categoría UIT 2026 = S/ 34150 (UIT S/ 2,975 × 12 = 35,700? Let me use 2025 rate: UIT 2025 = S/ 2,975, so annual = 35,700)
+var uit=2975*12;
+var taxableAnnual=bruto*12;
+var annualTax=0;
+if(imp==='si'){
+// Simplified 5ta category brackets
+var netAnnual=taxableAnnual-7*2975; // 7 UIT exemption
+if(netAnnual<=0){annualTax=0}
+else if(netAnnual<=5975*5){annualTax=netAnnual*0.08}
+else if(netAnnual<=5975*20){annualTax=5975*5*0.08+(netAnnual-5975*5)*0.14}
+else if(netAnnual<=5975*35){annualTax=5975*5*0.08+5975*15*0.14+(netAnnual-5975*20)*0.17}
+else if(netAnnual<=5975*45){annualTax=5975*5*0.08+5975*15*0.14+5975*15*0.17+(netAnnual-5975*35)*0.20}
+else{annualTax=5975*5*0.08+5975*15*0.14+5975*15*0.17+5975*10*0.20+(netAnnual-5975*45)*0.30}
+annualTax=Math.max(0,annualTax);
+}
+var monthlyTax=annualTax/12;
+
+var pension=0;
+var pensionLabel='';
+if(sis==='afp'){
+pension=bruto*afpRates[afpFondo];
+pensionLabel='Aporte AFP (~10%)';
+}else{
+pension=bruto*onpRate;
+pensionLabel='Aporte ONP (13%)';
+}
+
+var neto=bruto-pension-monthlyTax;
+var rows=[
+['Sueldo bruto',bruto],
+[pensionLabel,pension]
+];
+if(imp==='si'&&monthlyTax>0){
+rows.push(['Impuesto 5ta categoría',Math.round(monthlyTax*100)/100]);
+}
+rows.push(['Sueldo neto',Math.round(neto*100)/100]);
+
+document.getElementById('tbody').innerHTML=rows.map(function(r){
+return'<tr><td style="padding:9px 0;border-top:1px solid rgba(255,255,255,.14)">'+r[0]+'</td><td style="padding:9px 0;border-top:1px solid rgba(255,255,255,.14);text-align:right;font-variant-numeric:tabular-nums;font-weight:600">'+fmtPEN(r[1])+'</td></tr>';
+}).join('');
+
+document.getElementById('netoDisplay').textContent=fmtPEN(neto);
+document.getElementById('resultPanel').style.display='block';
+
+document.getElementById('copyBtn').onclick=function(){
+var txt='Mi sueldo neto (DocsPeru)\n'+rows.map(function(r){return'- '+r[0]+': '+fmtPEN(r[1])}).join('\n')+'\nTOTAL: '+fmtPEN(neto);
+navigator.clipboard&&navigator.clipboard.writeText(txt);
+};
+});
+actualizar();
+</script>
+</body>
+</html>

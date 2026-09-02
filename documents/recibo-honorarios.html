@@ -110,6 +110,7 @@
 <div><strong style="font-family:var(--font-display);color:var(--ink)">DocsPeru</strong><p style="font-size:.88rem;margin-top:8px">Documentos PDF gratis para Perú.</p></div>
 <div><h4>Herramientas</h4>
 <a href="constancia-trabajo.html">Constancia de Trabajo</a>
+<a href="calculadora-sueldo-neto.html">Sueldo Neto</a>
 <a href="recibo-honorarios.html">Recibo por Honorarios</a>
 <a href="recibo-venta.html">Recibo de Venta</a>
 <a href="factura-simplificada.html">Factura Simplificada</a>
@@ -215,6 +216,11 @@ doc.line(20,{line},70,{line});line+=3;
 doc.setFontSize(8);
 doc.text('Firma del emisor',20,{line});
 generatedDoc=doc;
+
+// Marca
+doc.setFontSize(7);
+doc.setTextColor(140,140,140);
+doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});
 doc.getBlob(function(blob){
 var url=URL.createObjectURL(blob);
 preview.innerHTML='<iframe src="'+url+'"></iframe>';
@@ -226,3 +232,8 @@ downloadBtn.addEventListener('click',function(){if(generatedDoc)generatedDoc.sav
 </script>
 </body>
 </html>
+
+// Marca
+doc.setFontSize(7);
+doc.setTextColor(140,140,140);
+doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});
