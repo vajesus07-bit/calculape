@@ -1,34 +1,35 @@
 <!doctype html>
 <html lang="es-PE">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src 'self' blob: https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1B6E2E">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GV42D9KTV5');
-</script>
-<meta charset="utf-8">
-<meta name="google-site-verification" content="googlea6b6a73be5459ab2.html">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Generador de Constancia de Trabajo PDF Gratis | DocsPeru</title>
 <meta name="description" content="Genera tu constancia de trabajo en PDF al instante. Sin registro, sin costo. Documento referencial para Perú.">
 <link rel="canonical" href="https://docsperu.site/documents/constancia-trabajo.html">
 <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+<link rel="manifest" href="../manifest.json">
+<meta property="og:title" content="Constancia de Trabajo PDF Gratis | DocsPeru">
+<meta property="og:description" content="Genera tu constancia de trabajo en PDF al instante. Sin registro.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://docsperu.site/documents/constancia-trabajo.html">
+<title>Generador de Constancia de Trabajo PDF Gratis | DocsPeru</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../assets/js/utils.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GV42D9KTV5');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2981802753233411" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Constancia de Trabajo","url":"https://docsperu.site/documents/constancia-trabajo.html","description":"Genera constancias de trabajo en PDF gratis para Perú","applicationCategory":"BusinessApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"}}
+</script>
 </head>
 <body>
 <header class="topbar">
@@ -39,68 +40,37 @@
 </button>
 <nav>
 <a href="../index.html">Herramientas</a>
-<a href="../index.html#como-funciona">Cómo funciona</a>
+<a href="../blog.html">Blog</a>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Cambiar tema"></button>
 </nav>
 </div>
 </header>
 <main class="page">
 <div class="wrap">
-<p class="breadcrumb"><a href="../index.html">Inicio</a> › <a href="../index.html">Herramientas</a> › Constancia de Trabajo</p>
+<p class="breadcrumb"><a href="../index.html">Inicio</a> › Constancia de Trabajo</p>
 <h1 class="title">Constancia de Trabajo</h1>
 <p class="intro">Llena los datos y genera un PDF con la constancia de trabajo referencial. Sin registro, sin costo.</p>
-<div class="ad-slot"><span>Espacio publicitario</span></div>
 <div class="doc-layout">
 <div class="card">
 <form id="form" novalidate>
 <h3 style="font-family:var(--font-display);font-size:1rem;margin-bottom:14px">Datos de la empresa</h3>
-<div class="field">
-<label>Nombre o razón social</label>
-<input type="text" id="empNombre" placeholder="Ej. Inversiones Díaz S.A.C." required>
-</div>
+<div class="field"><label>Nombre o razón social</label><input type="text" id="empNombre" placeholder="Ej. Inversiones Díaz S.A.C." required></div>
 <div class="row">
-<div class="field">
-<label>RUC</label>
-<input type="text" id="empRuc" placeholder="Ej. 20456789012" maxlength="11">
+<div class="field"><label>RUC</label><input type="text" id="empRuc" placeholder="20456789012" maxlength="11"></div>
+<div class="field"><label>Ciudad</label><input type="text" id="empCiudad" placeholder="Lima" value="Lima"></div>
 </div>
-<div class="field">
-<label>Ciudad</label>
-<input type="text" id="empCiudad" placeholder="Ej. Lima" value="Lima">
-</div>
-</div>
-<div class="field">
-<label>Dirección</label>
-<input type="text" id="empDireccion" placeholder="Ej. Av. Arequipa 1234, Lima">
-</div>
+<div class="field"><label>Dirección</label><input type="text" id="empDireccion" placeholder="Av. Arequipa 1234, Lima"></div>
 <h3 style="font-family:var(--font-display);font-size:1rem;margin:18px 0 14px">Datos del trabajador</h3>
-<div class="field">
-<label>Nombre completo</label>
-<input type="text" id="traNombre" placeholder="Ej. María López García" required>
+<div class="field"><label>Nombre completo</label><input type="text" id="traNombre" placeholder="María López García" required></div>
+<div class="row">
+<div class="field"><label>DNI</label><input type="text" id="traDni" placeholder="47234567" maxlength="8"></div>
+<div class="field"><label>Cargo / puesto</label><input type="text" id="traCargo" placeholder="Asistente administrativo"></div>
 </div>
 <div class="row">
-<div class="field">
-<label>DNI</label>
-<input type="text" id="traDni" placeholder="Ej. 47234567" maxlength="8">
+<div class="field"><label>Fecha de ingreso</label><input type="date" id="fecIngreso"></div>
+<div class="field"><label>Fecha de emisión</label><input type="date" id="fecEmision"></div>
 </div>
-<div class="field">
-<label>Cargo / puesto</label>
-<input type="text" id="traCargo" placeholder="Ej. Asistente administrativo">
-</div>
-</div>
-<div class="row">
-<div class="field">
-<label>Fecha de ingreso</label>
-<input type="date" id="fecIngreso">
-</div>
-<div class="field">
-<label>Fecha de emisión</label>
-<input type="date" id="fecEmision" value="">
-</div>
-</div>
-<div class="field">
-<label>Remuneración bruta mensual (S/)</label>
-<input type="number" id="salario" placeholder="Ej. 2500" min="0" step="0.01">
-<span class="hint">Se incluirá en número y en letras</span>
-</div>
+<div class="field"><label>Remuneración bruta mensual (S/)</label><input type="number" id="salario" placeholder="2500" min="0" step="0.01"><span class="hint">Se incluirá en número y en letras</span></div>
 <p class="err" id="err"></p>
 <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Generar PDF</button>
 </form>
@@ -110,13 +80,13 @@
 <div class="result-header"><span>Vista previa del PDF</span></div>
 <div class="preview" id="preview">
 <div class="preview-placeholder">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
 <p>Llena el formulario y genera el PDF</p>
 </div>
 </div>
 <div class="result-actions" id="actions" style="display:none">
 <button class="btn btn-primary btn-download" id="download">Descargar PDF</button>
-</div>
+<button class="btn btn-ghost btn-share" onclick="sharePDF('Constancia de Trabajo',lastBlobUrl)" title="Compartir">Compartir</button>
 </div>
 </div>
 </div>
@@ -133,7 +103,6 @@
 <a href="calculadora-sueldo-neto.html">Sueldo Neto</a>
 <a href="recibo-honorarios.html">Recibo por Honorarios</a>
 <a href="recibo-venta.html">Recibo de Venta</a>
-<a href="factura-simplificada.html">Factura Simplificada</a>
 </div>
 <div><h4>Legal</h4>
 <a href="../sobre.html">Sobre nosotros</a>
@@ -143,20 +112,18 @@
 <p class="fine">© 2026 DocsPeru · Documentos referenciales. No sustituyen formatos oficiales de SUNAT.</p>
 </div>
 </footer>
-<script src="../assets/js/utils.js"></script>
 <script>
 (function(){
 var form=document.getElementById('form');
 var err=document.getElementById('err');
 var preview=document.getElementById('preview');
 var actions=document.getElementById('actions');
-var downloadBtn=document.getElementById('download');
 var generatedDoc=null;
+var lastBlobUrl=null;
 
 document.getElementById('fecEmision').valueAsDate=new Date();
-form.addEventListener('submit',function(e){
-e.preventDefault();generate();
-});
+form.addEventListener('submit',function(e){e.preventDefault();generate()});
+
 function generate(){
 err.textContent='';
 var empNombre=document.getElementById('empNombre').value.trim();
@@ -171,82 +138,54 @@ var fecEmision=document.getElementById('fecEmision').value;
 var salario=parseFloat(document.getElementById('salario').value);
 if(!traNombre){err.textContent='Ingresa el nombre del trabajador.';return}
 if(!empNombre){err.textContent='Ingresa el nombre de la empresa.';return}
+
+showLoading('Generando constancia de trabajo…');
+
 var dIngreso=fecIngreso?new Date(fecIngreso+'T00:00:00'):null;
 var dEmision=fecEmision?new Date(fecEmision+'T00:00:00'):new Date();
 var salaryText='';
-if(salario>0){
-var intPart=Math.floor(salario);
-var decPart=Math.round((salario-intPart)*100);
-salaryText=numToWords(intPart);
-if(decPart>0)salaryText+=' y '+numToWords(decPart)+' céntimos';
-}
+if(salario>0){var intPart=Math.floor(salario);var decPart=Math.round((salario-intPart)*100);salaryText=numToWords(intPart);if(decPart>0)salaryText+=' y '+numToWords(decPart)+' céntimos'}
 var cityUpper=empCiudad.toUpperCase();
 var {jsPDF}=window.jspdf;
 var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
-var pageW=210;
-var line=0;
+var pageW=210,line=0;
 doc.setFont('helvetica');
-doc.setFontSize(9);
 line=15;
-doc.setFont('helvetica','bold');
-doc.setFontSize(14);
-var empNameDisplay=empNombre.toUpperCase();
-doc.text(empNameDisplay,pageW/2,{line},'center');
-doc.setFont('helvetica','normal');
-doc.setFontSize(9);
-line+=5;
-if(empRuc)doc.text('RUC: '+empRuc,pageW/2,{line},'center');
-line+=4;
-if(empDireccion){doc.setFontSize(8);doc.text(empDireccion,pageW/2,{line},'center');line+=4}
-doc.setFontSize(9);
-line+=2;
-doc.line(20,line,pageW-20,line);line+=8;
-doc.setFont('helvetica','bold');
-doc.setFontSize(13);
-doc.text('CONSTANCIA DE TRABAJO',pageW/2,{line},'center');line+=10;
-doc.setFont('helvetica','normal');
-doc.setFontSize(10);
-var certText='Quien suscribe, en representación de '+empNameDisplay+', hace constar que '+traNombre;
+doc.setFont('helvetica','bold');doc.setFontSize(14);
+doc.text(empNombre.toUpperCase(),pageW/2,line,'center');
+doc.setFont('helvetica','normal');doc.setFontSize(9);line+=5;
+if(empRuc)doc.text('RUC: '+empRuc,pageW/2,line,'center');line+=4;
+if(empDireccion){doc.setFontSize(8);doc.text(empDireccion,pageW/2,line,'center');line+=4}
+line+=2;doc.line(20,line,pageW-20,line);line+=8;
+doc.setFont('helvetica','bold');doc.setFontSize(13);
+doc.text('CONSTANCIA DE TRABAJO',pageW/2,line,'center');line+=10;
+doc.setFont('helvetica','normal');doc.setFontSize(10);
+var certText='Quien suscribe, en representación de '+empNombre.toUpperCase()+', hace constar que '+traNombre;
 if(traDni)certText+=', portador(a) del DNI N° '+traDni;
 certText+=', trabaja en nuestra empresa desde el '+dateToStr(dIngreso)+', desempeñando el cargo de '+traCargo+'.';
 var lines=doc.splitTextToSize(certText,pageW-40);
-doc.text(lines,20,{line});line+=lines.length*5+4;
-if(salario>0){
-var salLine='Asimismo, se deja constancia que su remuneración bruta mensual es de S/ '+salario.toFixed(2)+' ('+salaryText+' soles).';
-var salLines=doc.splitTextToSize(salLine,pageW-40);
-doc.text(salLines,20,{line});line+=salLines.length*5+4;
-}
-var endText='La presente constancia se expide a solicitud del interesado, para los fines que convenga.';
-var endLines=doc.splitTextToSize(endText,pageW-40);
-doc.text(endLines,20,{line});line+=endLines.length*5+4;
-line+=4;
-doc.text(cityUpper+', '+dateToStr(dEmision),20,{line});line+=14;
-doc.line(20,{line},70,{line});line+=3;
-doc.setFontSize(8);
-doc.text('Firma y sello del empleador',20,{line});line+=8;
-doc.line(pageW-70,{line},pageW-20,{line});line+=3;
-doc.text('Trabajador',pageW-70,{line},'center');
+doc.text(lines,20,line);line+=lines.length*5+4;
+if(salario>0){var salLine='Asimismo, se deja constancia que su remuneración bruta mensual es de S/ '+salario.toFixed(2)+' ('+salaryText+' soles).';var salLines=doc.splitTextToSize(salLine,pageW-40);doc.text(salLines,20,line);line+=salLines.length*5+4}
+var endText='La presente constancia se expide a solicitud del interesado, para los fines que convenga.';var endLines=doc.splitTextToSize(endText,pageW-40);doc.text(endLines,20,line);line+=endLines.length*5+4;
+line+=4;doc.text(cityUpper+', '+dateToStr(dEmision),20,line);line+=14;
+doc.line(20,line,70,line);line+=3;doc.setFontSize(8);doc.text('Firma y sello del empleador',20,line);line+=8;
+doc.line(pageW-70,line,pageW-20,line);line+=3;doc.text('Trabajador',pageW-70,line,'center');
+doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});
 generatedDoc=doc;
 
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});
 doc.getBlob(function(blob){
-var url=URL.createObjectURL(blob);
-preview.innerHTML='<iframe src="'+url+'"></iframe>';
+lastBlobUrl=URL.createObjectURL(blob);
+preview.innerHTML='<iframe src="'+lastBlobUrl+'"></iframe>';
 actions.style.display='flex';
+saveToHistory('Constancia de Trabajo - '+traNombre,lastBlobUrl);
+hideLoading();
 });
 }
-downloadBtn.addEventListener('click',function(){
-if(generatedDoc) generatedDoc.save('constancia-de-trabajo.pdf');
+
+document.getElementById('download').addEventListener('click',function(){
+if(generatedDoc)generatedDoc.save('constancia-de-trabajo.pdf');
 });
 })();
 </script>
 </body>
 </html>
-
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});

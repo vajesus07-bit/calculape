@@ -8,6 +8,11 @@
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1B6E2E">
+<link rel="manifest" href="../manifest.json">
+<meta property="og:title" content="Recibo de Venta PDF Gratis | DocsPeru">
+<meta property="og:description" content="Genera recibos de venta con detalle de productos, IGV y total. Genera el PDF al instante.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://docsperu.site/documents/recibo-venta.html">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
 <script>
@@ -29,6 +34,9 @@
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2981802753233411" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Recibo de Venta","url":"https://docsperu.site/documents/recibo-venta.html","description":"Genera recibos de venta con detalle de productos, IGV y total en PDF","applicationCategory":"BusinessApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"}}
+</script>
 </head>
 <body>
 <header class="topbar">
@@ -39,7 +47,8 @@
 </button>
 <nav>
 <a href="../index.html">Herramientas</a>
-<a href="../index.html#como-funciona">Cómo funciona</a>
+<a href="../blog.html">Blog</a>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Cambiar tema"></button>
 </nav>
 </div>
 </header>
@@ -121,6 +130,7 @@
 </div>
 <div class="result-actions" id="actions" style="display:none">
 <button class="btn btn-primary btn-download" id="download">Descargar PDF</button>
+<button class="btn btn-ghost btn-share" onclick="sharePDF('Recibo de Venta',lastBlobUrl)" title="Compartir">Compartir</button>
 </div>
 </div>
 </div>
@@ -156,8 +166,8 @@ var addBtn=document.getElementById('addItem');
 var err=document.getElementById('err');
 var preview=document.getElementById('preview');
 var actions=document.getElementById('actions');
-var downloadBtn=document.getElementById('download');
 var generatedDoc=null;
+var lastBlobUrl=null;
 document.getElementById('fecha').valueAsDate=new Date();
 var itemCount=1;
 function addItemRow(){
@@ -219,6 +229,8 @@ items.push({desc:desc,qty:qty,price:price,total:total});
 if(items.length===0){err.textContent='Agrega al menos un producto.';return}
 var igv=subtotal*0.18;
 var total=subtotal+igv;
+showLoading('Generando recibo de venta…');
+
 var dFecha=fecha?new Date(fecha+'T00:00:00'):new Date();
 var {jsPDF}=window.jspdf;
 var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
@@ -272,23 +284,18 @@ doc.setFontSize(8);
 doc.text('Este recibo no tiene validez tributaria. Para operaciones formales, emite tu comprobante electrónico en SUNAT.',20,{line});line+=3;
 generatedDoc=doc;
 
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});
+doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});
+
 doc.getBlob(function(blob){
-var url=URL.createObjectURL(blob);
-preview.innerHTML='<iframe src="'+url+'"></iframe>';
+lastBlobUrl=URL.createObjectURL(blob);
+preview.innerHTML='<iframe src="'+lastBlobUrl+'"></iframe>';
 actions.style.display='flex';
+saveToHistory('Recibo de Venta - '+cliNombre,lastBlobUrl);
+hideLoading();
 });
 }
-downloadBtn.addEventListener('click',function(){if(generatedDoc)generatedDoc.save('recibo-de-venta.pdf')});
+document.getElementById('download').addEventListener('click',function(){if(generatedDoc)generatedDoc.save('recibo-de-venta.pdf')});
 })();
 </script>
 </body>
 </html>
-
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});

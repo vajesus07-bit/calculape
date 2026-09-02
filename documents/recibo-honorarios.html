@@ -8,6 +8,11 @@
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1B6E2E">
+<link rel="manifest" href="../manifest.json">
+<meta property="og:title" content="Recibo por Honorarios PDF Gratis | DocsPeru">
+<meta property="og:description" content="Genera tu recibo por honorarios en PDF al instante. Calcula IGV automáticamente. Genera el PDF al instante.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://docsperu.site/documents/recibo-honorarios.html">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
 <script>
@@ -29,6 +34,9 @@
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2981802753233411" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Recibo por Honorarios","url":"https://docsperu.site/documents/recibo-honorarios.html","description":"Genera recibos por honorarios en PDF con cálculo automático de IGV para Perú","applicationCategory":"BusinessApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"}}
+</script>
 </head>
 <body>
 <header class="topbar">
@@ -39,7 +47,8 @@
 </button>
 <nav>
 <a href="../index.html">Herramientas</a>
-<a href="../index.html#como-funciona">Cómo funciona</a>
+<a href="../blog.html">Blog</a>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Cambiar tema"></button>
 </nav>
 </div>
 </header>
@@ -106,6 +115,7 @@
 </div>
 <div class="result-actions" id="actions" style="display:none">
 <button class="btn btn-primary btn-download" id="download">Descargar PDF</button>
+<button class="btn btn-ghost btn-share" onclick="sharePDF('Recibo por Honorarios',lastBlobUrl)" title="Compartir">Compartir</button>
 </div>
 </div>
 </div>
@@ -140,8 +150,8 @@ var form=document.getElementById('form');
 var err=document.getElementById('err');
 var preview=document.getElementById('preview');
 var actions=document.getElementById('actions');
-var downloadBtn=document.getElementById('download');
 var generatedDoc=null;
+var lastBlobUrl=null;
 document.getElementById('fecha').valueAsDate=new Date();
 form.addEventListener('submit',function(e){e.preventDefault();generate()});
 function generate(){
@@ -158,6 +168,8 @@ if(!emiNombre){err.textContent='Ingresa el nombre del emisor.';return}
 if(!recNombre){err.textContent='Ingresa el nombre del receptor.';return}
 if(!servicio){err.textContent='Ingresa la descripción del servicio.';return}
 if(!monto||monto<=0){err.textContent='Ingresa un monto válido.';return}
+showLoading('Generando recibo por honorarios…');
+
 var igv=monto*0.18;
 var total=monto+igv;
 var dFecha=fecha?new Date(fecha+'T00:00:00'):new Date();
@@ -227,23 +239,18 @@ doc.setFontSize(8);
 doc.text('Firma del emisor',20,{line});
 generatedDoc=doc;
 
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});
+doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});
+
 doc.getBlob(function(blob){
-var url=URL.createObjectURL(blob);
-preview.innerHTML='<iframe src="'+url+'"></iframe>';
+lastBlobUrl=URL.createObjectURL(blob);
+preview.innerHTML='<iframe src="'+lastBlobUrl+'"></iframe>';
 actions.style.display='flex';
+saveToHistory('Recibo por Honorarios - '+emiNombre,lastBlobUrl);
+hideLoading();
 });
 }
-downloadBtn.addEventListener('click',function(){if(generatedDoc)generatedDoc.save('recibo-honorarios.pdf')});
+document.getElementById('download').addEventListener('click',function(){if(generatedDoc)generatedDoc.save('recibo-honorarios.pdf')});
 })();
 </script>
 </body>
 </html>
-
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});

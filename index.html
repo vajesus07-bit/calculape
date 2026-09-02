@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google.com https://pagead2.googlesyndication.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://pagead2.googlesyndication.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.googlesyndication.com; child-src 'none'; object-src 'none'; base-uri 'self';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="X-Frame-Options" content="DENY">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
@@ -11,36 +11,31 @@
 <meta name="google-site-verification" content="googlea6b6a73be5459ab2.html">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1B6E2E">
-<link rel="canonical" href="https://docsperu.site/">
-<meta property="og:title" content="DocsPeru — Documentos PDF gratis para Perú">
-<meta property="og:description" content="Constancia de trabajo, recibo por honorarios y recibo de venta. Genera el PDF al instante y descárgalo.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://docsperu.site/">
-<title>DocsPeru — Generador de documentos PDF para Perú</title>
-<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GV42D9KTV5');
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2981802753233411" crossorigin="anonymous"></script>
 <meta name="description" content="Genera constancias de trabajo, recibos por honorarios y recibos de venta en PDF gratis. Sin registro, sin costo. Listo en segundos.">
 <link rel="canonical" href="https://docsperu.site/">
 <meta property="og:title" content="DocsPeru — Documentos PDF gratis para Perú">
-<meta property="og:description" content="Constancia de trabajo, recibo por honorarios y recibo de venta. Genera el PDF al instante y descárgalo.">
+<meta property="og:description" content="Constancia de trabajo, recibo por honorarios y recibo de venta. Genera el PDF al instante.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://docsperu.site/">
+<meta property="og:site_name" content="DocsPeru">
+<title>DocsPeru — Generador de documentos PDF para Perú</title>
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="assets/js/utils.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GV42D9KTV5');</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2981802753233411" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"DocsPeru","url":"https://docsperu.site","description":"Generador gratuito de documentos PDF para Perú","potentialAction":{"@type":"SearchAction","target":"https://docsperu.site/?q={search_term_string}","query-input":"required name=search_term_string"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"DocsPeru","url":"https://docsperu.site","logo":"https://docsperu.site/assets/img/favicon.svg","sameAs":[]}
+</script>
 </head>
 <body>
 <header class="topbar">
@@ -51,7 +46,9 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </button>
 <nav>
 <a href="index.html">Herramientas</a>
+<a href="blog.html">Blog</a>
 <a href="#como-funciona">Cómo funciona</a>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Cambiar tema"></button>
 </nav>
 </div>
 </header>
@@ -68,12 +65,12 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <div class="section-head"><h2>Herramientas disponibles</h2><p>Selecciona el documento que necesitas generar.</p></div>
 <div class="grid grid-3">
 <a class="card" href="documents/constancia-trabajo.html">
-<div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+<div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
 <h3>Constancia de Trabajo</h3>
 <p>Documento que certifica tu vínculo laboral. Necesaria para préstamos, trámites y alquileres.</p>
 </a>
 <a class="card" href="documents/calculadora-sueldo-neto.html">
-<div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/><line x1="14" y1="18" x2="16" y2="18"/></svg></div>
+<div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/></svg></div>
 <h3>Calculadora de Sueldo Neto</h3>
 <p>Descubre cuánto recibes realmente descontando AFP, ONP e impuestos.</p>
 </a>
@@ -84,7 +81,8 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </a>
 <a class="card" href="documents/factura-simplificada.html">
 <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-<h3>Factura Simplificada</h3><p>Para pequeños negocios con IGV y detalle completo de productos.</p>
+<h3>Factura Simplificada</h3>
+<p>Para pequeños negocios con IGV y detalle completo de productos.</p>
 </a>
 <a class="card" href="documents/recibo-venta.html">
 <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
@@ -117,8 +115,14 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 </div>
 </section>
 <div class="ad-slot"><span>Espacio publicitario</span></div>
-<div class="wrap" style="margin-top:28px">
-<div style="background:var(--green-soft);border:1px solid #c8e3cf;border-radius:var(--radius-sm);padding:16px 18px;font-size:.9rem;color:var(--green-2)">
+<section class="section">
+<div class="wrap">
+<div class="section-head"><h2>Documentos recientes</h2><p>Tus últimos PDFs generados (almacenados localmente).</p></div>
+<ul class="history-list" id="historyList"></ul>
+</div>
+</section>
+<div class="wrap" style="margin-top:20px">
+<div style="background:var(--green-soft);border:1px solid #c8e3cf;border-radius:var(--radius-sm);padding:14px 16px;font-size:.88rem;color:var(--green-2)">
 <strong>Nota:</strong> Estos documentos son formatos referenciales. Para documentos con validez legal o tributaria, consulta los formatos oficiales de SUNAT o tu abogado.
 </div>
 </div>
@@ -133,6 +137,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <a href="documents/constancia-trabajo.html">Constancia de Trabajo</a>
 <a href="documents/recibo-honorarios.html">Recibo por Honorarios</a>
 <a href="documents/recibo-venta.html">Recibo de Venta</a>
+<a href="documents/calculadora-sueldo-neto.html">Sueldo Neto</a>
 </div>
 <div>
 <h4>Legal</h4>
@@ -143,5 +148,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 <p class="fine">© 2026 DocsPeru · Documentos referenciales. No sustituyen formatos oficiales.</p>
 </div>
 </footer>
+<script>renderHistory();</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}</script>
 </body>
 </html>

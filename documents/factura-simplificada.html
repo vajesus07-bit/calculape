@@ -8,6 +8,11 @@
 <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1B6E2E">
+<link rel="manifest" href="../manifest.json">
+<meta property="og:title" content="Factura Simplificada PDF Gratis | DocsPeru">
+<meta property="og:description" content="Genera facturas simplificadas en PDF al instante. Para negocios pequeños en Perú. Genera el PDF al instante.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://docsperu.site/documents/factura-simplificada.html">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Generador de Factura Simplificada PDF Gratis | DocsPeru</title>
@@ -22,6 +27,9 @@
 <script src="https://www.googletagmanager.com/gtag/js?id=G-GV42D9KTV5"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-GV42D9KTV5');</script>
 <meta name="google-site-verification" content="googlea6b6a73be5459ab2.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Generador de Factura Simplificada","url":"https://docsperu.site/documents/factura-simplificada.html","description":"Genera facturas simplificadas en PDF al instante para negocios pequeños en Perú","applicationCategory":"BusinessApplication","operatingSystem":"All","offers":{"@type":"Offer","price":"0","priceCurrency":"PEN"}}
+</script>
 </head>
 <body>
 <header class="topbar">
@@ -32,7 +40,8 @@
 </button>
 <nav>
 <a href="../index.html">Herramientas</a>
-<a href="../index.html#como-funciona">Cómo funciona</a>
+<a href="../blog.html">Blog</a>
+<button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Cambiar tema"></button>
 </nav>
 </div>
 </header>
@@ -91,6 +100,7 @@
 </div>
 <div class="result-actions" id="actions" style="display:none">
 <button class="btn btn-primary btn-download" id="download">Descargar PDF</button>
+<button class="btn btn-ghost btn-share" onclick="sharePDF('Factura Simplificada',lastBlobUrl)" title="Compartir">Compartir</button>
 </div>
 </div>
 </div>
@@ -126,8 +136,8 @@ var addBtn=document.getElementById('addItem');
 var err=document.getElementById('err');
 var preview=document.getElementById('preview');
 var actions=document.getElementById('actions');
-var downloadBtn=document.getElementById('download');
 var generatedDoc=null;
+var lastBlobUrl=null;
 document.getElementById('fecha').valueAsDate=new Date();
 
 function addItemRow(){
@@ -191,6 +201,8 @@ items.push({desc:desc,qty:qty,price:price,total:total});
 if(items.length===0){err.textContent='Agrega al menos un producto.';return}
 var igv=subtotal*0.18;
 var total=subtotal+igv;
+showLoading('Generando factura simplificada…');
+
 var dFecha=fecha?new Date(fecha+'T00:00:00'):new Date();
 var {jsPDF}=window.jspdf;
 var doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
@@ -262,23 +274,18 @@ doc.setTextColor(120,120,120);
 doc.text('Documento referencial - No válido como comprobante electrónico SUNAT. Para facturación oficial use el sistema de SUNAT.',pageW/2,{y:line},'center');
 generatedDoc=doc;
 
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});
+doc.setFontSize(7);doc.setTextColor(140,140,140);doc.text('Generado por docsperu.site | docsperu.site',105,288,{align:'center'});
+
 doc.getBlob(function(blob){
-var url=URL.createObjectURL(blob);
-preview.innerHTML='<iframe src="'+url+'"></iframe>';
+lastBlobUrl=URL.createObjectURL(blob);
+preview.innerHTML='<iframe src="'+lastBlobUrl+'"></iframe>';
 actions.style.display='flex';
+saveToHistory('Factura Simplificada - '+cliNombre,lastBlobUrl);
+hideLoading();
 });
 }
-downloadBtn.addEventListener('click',function(){if(generatedDoc)generatedDoc.save('factura-simplificada.pdf')});
+document.getElementById('download').addEventListener('click',function(){if(generatedDoc)generatedDoc.save('factura-simplificada.pdf')});
 })();
 </script>
 </body>
 </html>
-
-// Marca
-doc.setFontSize(7);
-doc.setTextColor(140,140,140);
-doc.text('Generado por docsperu.site | docsperu.site', 105, 290, {align:'center'});
